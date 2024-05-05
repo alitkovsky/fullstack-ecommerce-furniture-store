@@ -1,4 +1,4 @@
-import { Nav, NavLink } from "@/components/Nav";
+import Header from "@/components/Header";
 
 export const dynamic = "force-dynamic";
 
@@ -8,13 +8,15 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <>
-      <Nav>
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="/products">Products</NavLink>
-        <NavLink href="/orders">My Orders</NavLink>
-      </Nav>
-      <div className="container my-6">{children}</div>
-    </>
+    <main className="flex flex-col w-full max-w-[1440px] mx-auto overflow-hidden min-h-svh">
+      <Header
+        id=""
+        name=""
+        priceInCents={0}
+        description=""
+        imagePath=""
+      />
+      {children}
+    </main>
   )
 };

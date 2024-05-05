@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans"
+})
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins"
+})
 
 export const metadata: Metadata = {
   title: "Furniro - Fullstack E-commerce App",
@@ -17,10 +26,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="icon"
+          href="/assets/icon.svg"
+          type="image/<generated>"
+          sizes="<generated>"
+        />
+        <link
+          rel="apple-touch-icon"
+          href="/assets/apple-icon.jpg"
+          type="image/<generated>"
+          sizes="<generated>"
+        />
+      </head>
       <body
         className={cn(
           "bg-background min-h-screen font-sans antialiased",
-          inter.variable
+          poppins.variable
         )}
       >
         {children}
