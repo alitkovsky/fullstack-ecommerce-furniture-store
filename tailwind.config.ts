@@ -12,15 +12,23 @@ const config = {
   prefix: "",
   theme: {
     container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
+      padding: {
+        DEFAULT: "15px"
       },
+    },
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "834px",
+      xl: "1200px",
+    },
+    backgroundImage: {
+      hero: "url(/assets/bg-hero.png)",
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        secondary: ["var(--font-sans)", ...fontFamily.sans],
+        primary: ["var(--font-poppins)", ...fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -29,13 +37,14 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#B88E2F",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "#333333",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        herotext: "#FFF3E3",
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
