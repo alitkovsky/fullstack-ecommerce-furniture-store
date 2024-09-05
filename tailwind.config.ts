@@ -26,6 +26,9 @@ const config = {
       hero: "url(/assets/bg-hero.png)",
     },
     extend: {
+      gridTemplateColumns: {
+        "cards": "repeat(auto-fit, minmax(276px, 1fr))",
+      },
       fontFamily: {
         secondary: ["var(--font-sans)", ...fontFamily.sans],
         primary: ["var(--font-poppins)", ...fontFamily.sans],
@@ -37,12 +40,13 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#B88E2F",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#333333",
+          foreground: "#3A3A3A",
         },
         secondary: {
-          DEFAULT: "#333333",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "#666666",
+          foreground: "#898989",
+          light: "#9f9f9f",
         },
         herotext: "#FFF3E3",
         destructive: {
@@ -54,7 +58,7 @@ const config = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "#B88E2F",
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
@@ -62,7 +66,7 @@ const config = {
           foreground: "hsl(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
+          DEFAULT: "#F4F5F7",
           foreground: "hsl(var(--card-foreground))",
         },
       },
