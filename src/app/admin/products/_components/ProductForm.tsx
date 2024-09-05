@@ -10,6 +10,13 @@ import { addProduct, updateProduct } from "../../_actions/products";
 import { useFormState, useFormStatus } from "react-dom";
 import { Product } from "@prisma/client";
 import Image from "next/image";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 export function ProductForm({ product }: { product?: Product | null }) {
   const [error, action] = useFormState(
@@ -19,6 +26,14 @@ export function ProductForm({ product }: { product?: Product | null }) {
   const [priceInCents, setPriceInCents] = useState<number | undefined>(
     product?.priceInCents
   )
+  const [collection, setCollection] = useState<string[] | undefined>(
+    product?.collectionIDs
+  );
+
+  const handleCollectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
+    setCollection(selectedOptions);
+  };
 
   return (
     <form action={action} className="space-y-8">
@@ -32,6 +47,30 @@ export function ProductForm({ product }: { product?: Product | null }) {
           defaultValue={product?.name || ""}
         />
         {error.name && <div className="text-destructive">{error.name}</div>}
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="collection">Collection</Label>
+        <Select>
+          <SelectTrigger>
+            <SelectValue placeholder="Select Collection" />
+            <SelectContent position="popper">
+              <SelectItem value="Dining">Dining</SelectItem>
+              <SelectItem value="Living">Living</SelectItem>
+              <SelectItem value="Bedroom">Bedroom</SelectItem>
+            </SelectContent>
+          </SelectTrigger>
+        </Select>
+        {/* <select
+          id="collection"
+          name="collection"
+          onChange={(e) => handleCollectionChange(e)}
+          className="w-full rounded border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50"
+        >
+          <option value="">Select a collection</option>
+          <option value="Dining" >Dining</option>
+          <option value="Living">Living</option>
+          <option value="Bedroom">Bedroom</option>
+        </select> */}
       </div>
       <div className="space-y-2">
         <Label htmlFor="priceInCents">Price In Cents</Label>
@@ -92,7 +131,7 @@ function SubmitButton() {
   const { pending } = useFormStatus()
 
   return (
-    <Button type="submit" disabled={pending}>
+    <Button type="submit" disabled={pending} variant="flat">
       {pending ? "Saving..." : "Save"}
     </Button>
   )

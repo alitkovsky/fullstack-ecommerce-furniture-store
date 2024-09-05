@@ -72,17 +72,21 @@
     }
 
     body {
-      @apply bg-background text-foreground;
+      @apply bg-background text-primary;
     }
 
     a {
-      @apply text-[20px] hover:text-accent transition-all duration-300;
+      @apply hover:text-accent transition-all duration-300;
     }
 
     h1, h2, h3, h4, h5, h6 {
       @apply font-primary text-primary font-semibold;
     }
-    
+
+    aside ul li {
+      @apply flex capitalize list-none cursor-pointer text-primary font-primary font-medium;
+    }
+
     .h1 {
       @apply text-[74px] lg:text-[84px] leading-none;
     }
@@ -96,7 +100,7 @@
     }
 
     .btn-primary {
-      @apply bg-primary hover:bg-primary-hover;
+      @apply bg-accent hover:bg-primary-hover;
     }
 
     .btn-accent {
@@ -105,5 +109,119 @@
 
     .swiper .swiper-pagination-bullet {
       @apply bg-primary
+    }
+
+    .image-container {
+      @apply w-full h-full aspect-video;
+
+      > div {
+        position: unset !important;
+      }
+
+      .image {
+        object-fit: cover !important;
+        width: 100% !important;
+        height: 300px !important;
+        position: relative !important;
+
+      }
+    }
+
+    .homegrid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+  }
+
+    .homegrid img:first-child {
+        grid-area: 1 / 1 / 5 / 2;
+    }
+
+    .homegrid img:nth-child(2) {
+        grid-area: 5 / 1 / 9 / 3;
+    }
+
+    .homegrid img:nth-child(3) {
+        grid-area: 2 / 2 / 5 / 6;
+    }
+
+    .homegrid img:nth-child(4) {
+        grid-area: 1 / 11 / 6 / 13;
+    }
+
+    .homegrid img:nth-child(5) {
+        grid-area: 3 / 6 / 7 / 8;
+    }
+
+    .homegrid img:nth-child(6) {
+        grid-area: 5 / 3 / 8 / 6;
+    }
+
+    .homegrid img:nth-child(7) {
+        grid-area: 2 / 8 / 6 / 11;
+    }
+
+    .homegrid img:nth-child(8) {
+        grid-area: 6 / 8 / 9 / 10;
+    }
+
+    .homegrid img:nth-child(9) {
+        grid-area: 6 / 10 / 8 / 12;
+    }
+
+    .image-collection {
+      @apply w-full h-full aspect-video rounded-sm;
+
+      > div {
+        position: unset !important;
+      }
+
+      .image {
+        object-fit: cover !important;
+        width: 100% !important;
+        height: 480px !important;
+        position: relative !important;
+        border-radius: 0.5rem;
+
+      }
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .arrow {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      margin-top: -5px;
+      z-index: 50;
+    }
+    .arrow.arrow-left {
+      left: 0;
+    }
+    .arrow.arrow-right {
+      right: 0;
+    }
+
+    .swiper-slide {
+      /* Center slide text vertically */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 440px;
+    }
+
+    .swiper-slide {
+      width: 80%;
+    }
+
+    .swiper-slide:nth-child(2n) {
+      width: 60%;
+    }
+
+    .swiper-slide:nth-child(3n) {
+      width: 40%;
     }
   }

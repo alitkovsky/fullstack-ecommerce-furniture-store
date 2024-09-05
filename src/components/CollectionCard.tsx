@@ -1,4 +1,3 @@
-import { formatCurrency } from "@/lib/formatters";
 import { cn } from "@/lib/utils";
 import {
   Card,
@@ -11,44 +10,39 @@ import {
 import { Button } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { RiFacebookFill, RiInstagramFill, RiLinkedinFill, RiTwitterFill } from "react-icons/ri";
 
-type ProductCardProps = {
+type CollectionCardProps = {
   id: string
   name: string
-  priceInCents: number
-  description: string
   imagePath: string
 };
 
-export function ProductCard({
+export function CollectionCard({
   id,
   name,
-  priceInCents,
-  description,
   imagePath,
-}: ProductCardProps) {
+}: CollectionCardProps) {
   return (
     <Card className="group flex flex-col">
-      <div className={"image-container"}>
+      <div className={"image-collection"}>
         <Image src={imagePath} alt={name} fill className={"image"} />
       </div>
-      <div className="bg-card">
+      <div>
         <CardHeader>
-          <CardTitle className="text-primary-foreground font-semibold text-[24px]">{name}</CardTitle>
+          <CardTitle className="text-primary-foreground font-semibold text-[24px] self-center pt-[10px]">{name}</CardTitle>
         </CardHeader>
-        <CardContent>
+        {/* <CardContent>
           <p className="line-clamp-1 font-medium text-[16px] text-secondary-foreground leading-10">{description}</p>
-        </CardContent>
-        <CardFooter>
+        </CardContent> */}
+        {/* <CardFooter>
           <CardDescription className="text-primary-foreground font-semibold text-[20px]">{formatCurrency(priceInCents / 100)}</CardDescription>
-        </CardFooter>
+        </CardFooter> */}
       </div>
     </Card>
   )
 };
 
-export function ProductCardSkeleton() {
+export function CollectionCardSkeleton() {
   return (
     <Card className="overflow-hidden flex flex-col animate-pulse">
       <div className="w-full aspect-video h-[300px]" />

@@ -54,25 +54,29 @@ import {
    ])
 
    return (
-     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-       <DashboardCard
-         title="Sales"
-         subtitle={`${formatNumber(salesData.numberOfSales)} Orders`}
-         body={formatCurrency(salesData.amount)}
-       />
-       <DashboardCard
-         title="Customers"
-         subtitle={`${formatCurrency(
-           userData.averageValuePerUser
-         )} Average Value`}
-         body={formatNumber(userData.userCount)}
-       />
-       <DashboardCard
-         title="Active Products"
-         subtitle={`${formatNumber(productData.inactiveCount)} Inactive`}
-         body={formatNumber(productData.activeCount)}
-       />
-     </div>
+    <section className="mt-6 relative">
+      <div className="container mx-auto space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <DashboardCard
+            title="Sales"
+            subtitle={`${formatNumber(salesData.numberOfSales)} Orders`}
+            body={formatCurrency(salesData.amount)}
+          />
+          <DashboardCard
+            title="Customers"
+            subtitle={`${formatCurrency(
+              userData.averageValuePerUser
+            )} Average Value`}
+            body={formatNumber(userData.userCount)}
+          />
+          <DashboardCard
+            title="Active Products"
+            subtitle={`${formatNumber(productData.inactiveCount)} Inactive`}
+            body={formatNumber(productData.activeCount)}
+          />
+        </div>
+      </div>
+    </section>
    )
  }
 
@@ -86,7 +90,7 @@ import {
    return (
      <Card>
        <CardHeader>
-         <CardTitle>{title}</CardTitle>
+         <CardTitle className="text-accent">{title}</CardTitle>
          <CardDescription>{subtitle}</CardDescription>
        </CardHeader>
        <CardContent>

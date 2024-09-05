@@ -1,4 +1,5 @@
 import { Nav, NavLink } from "@/components/Nav";
+import Header from "@/components/Header";
 
 export const dynamic = "force-dynamic";
 
@@ -8,14 +9,15 @@ export default function AdminLayout({
   children: React.ReactNode
 }>) {
   return (
-    <>
-      <Nav>
-        <NavLink href="/admin">Dashboard</NavLink>
-        <NavLink href="/admin/products">Products</NavLink>
-        <NavLink href="/admin/users">Customers</NavLink>
-        <NavLink href="/admin/orders">Sales</NavLink>
-      </Nav>
-      <div className="container my-6">{children}</div>
-    </>
+    <main className="flex flex-col w-full max-w-[1440px] mx-auto overflow-hidden min-h-svh">
+      <Header
+        id=""
+        name=""
+        priceInCents={0}
+        description=""
+        imagePath=""
+      />
+      {children}
+    </main>
   )
 };

@@ -1,12 +1,12 @@
 import { PageHeader } from "../../_components/PageHeader";
-import { ProductForm } from "../_components/ProductForm";
+import { CollectionForm } from "../_components/CollectionForm";
 
-export default function NewProductPage() {
+export default function NewCollectionPage() {
   return (
     <section className="mt-6 relative">
       <div className="container mx-auto space-y-4">
-        <PageHeader>Add Product</PageHeader>
-        <ProductForm />
+        <PageHeader>Add Collection</PageHeader>
+        <CollectionForm />
       </div>
     </section>
   )

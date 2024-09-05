@@ -8,7 +8,7 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <main className="flex flex-col w-full max-w-[1440px] mx-auto overflow-hidden min-h-svh">
+    <main className="flex flex-col w-full mx-auto overflow-hidden min-h-svh">
       <Header
         id=""
         name=""
