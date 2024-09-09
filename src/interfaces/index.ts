@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import { Dispatch, SetStateAction } from "react";
 
 export interface SignupProps {
@@ -54,7 +55,7 @@ export interface SlideItemType {
     id: number,
     category: string,
     title: string,
-    image: string,
+    image: StaticImageData,
     link: string
 } // homeslider.tsx
 

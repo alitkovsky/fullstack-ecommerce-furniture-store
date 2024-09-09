@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import React, { useRef, useState } from "react";
-// import { Swiper, SwiperSlide } from "swiper/react";
 import Slider from "react-slick";
 
 import Slider1 from "/public/assets/img/home-slider/slider1.png";
@@ -15,13 +14,6 @@ import { SlideItemType } from "@/interfaces"
 
 import "@/slick/slick.css"
 import "@/slick/slick-theme.css"
-
-// import "swiper/css";
-// import "swiper/css/pagination";
-// import "swiper/css/navigation";
-
-// import required modules
-// import { Navigation, Pagination } from "swiper/modules";
 
 export default function Inspiration() {
 
@@ -109,30 +101,35 @@ export default function Inspiration() {
                 </div>
          </div>
          <div className="lg:col-span-2 relative">
-               <Slider ref={slider} {...settings}>
-                  {slides.map(slide => (
-                     <div key={slide.id} className="relative">
-                           <Image loading="lazy" className={`transition-transform object-cover duration-300 ease-in-out`} src={slide.image} alt="slide" />
-                           <div className={`slide-about absolute flex bottom-20 items-end left-6`}>
-                              <div className="bg-[#FFFFFFB8] z-10 gap-2 p-4 flex flex-col backdrop-blur-sm">
-                                 <span className="text-[#616161] font-medium">{slide.id} - {slide.title}</span>
-                                 <span className="text-[#3A3A3A] font-semibold text-3xl">{slide.category}</span>
-                              </div>
-                              <button className="-translate-x-28 z-0 bg-ochre text-white text-2xl p-3">
-                                 →
-                              </button>
-                           </div>
-                     </div>
-                  ))}
-               </Slider>
-               <div className="flex absolute lg:-left-5 top-1/2 justify-between w-full text-ochre text-sm">
-                  <button onClick={() => (slider?.current as any)?.slickPrev()} className={` bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
-                     <Image className="rotate-180" src={SliderArrow} alt="arrow" />
-                  </button>
-                  <button onClick={() => (slider?.current as any)?.slickNext()} className={`bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
-                     <Image src={SliderArrow} alt="arrow" />
-                  </button>
-               </div>
+            <Slider ref={slider} {...settings}>
+                {slides.map(slide => (
+                    <div key={slide.id} className="relative">
+                        <Image
+                            loading="lazy"
+                            className={`transition-transform object-cover duration-300 ease-in-out`}
+                            src={slide.image}
+                            alt="slide"
+                        />
+                        <div className={`slide-about absolute flex bottom-20 items-end left-6`}>
+                            <div className="bg-[#FFFFFFB8] z-10 gap-2 p-4 flex flex-col backdrop-blur-sm">
+                                <span className="text-[#616161] font-medium">{slide.id} - {slide.title}</span>
+                                <span className="text-[#3A3A3A] font-semibold text-3xl">{slide.category}</span>
+                            </div>
+                            <button className="-translate-x-28 z-0 bg-ochre text-white text-2xl p-3">
+                                →
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </Slider>
+            <div className="flex absolute lg:-left-5 top-1/2 justify-between w-full text-ochre text-sm">
+                <button onClick={() => (slider?.current as any)?.slickPrev()} className={` bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
+                    <Image className="rotate-180" src={SliderArrow} alt="arrow" />
+                </button>
+                <button onClick={() => (slider?.current as any)?.slickNext()} className={`bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
+                    <Image src={SliderArrow} alt="arrow" />
+                </button>
+            </div>
          </div>
       </section>
   );
