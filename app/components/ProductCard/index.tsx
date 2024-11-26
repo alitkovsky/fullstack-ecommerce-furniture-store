@@ -5,7 +5,6 @@ import Share from "@/public/assets/icons/producthover/share.svg";
 import { ProductCardProps } from "@/app/interfaces";
 import { useData } from "@/app/context/AppContext";
 import React, { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -19,7 +18,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     } = useData();
 
     const [isOverlayShown, setIsOverlayShown] = useState<boolean>(false);
-    const router = useRouter();
+
     const divRef = useRef<HTMLDivElement>(null);
 
     const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -84,7 +83,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     return (
             <Link href={`/products/${product.id}`}>
-                <div ref={divRef} className="bg-[#F4F5F7] cursor-pointer relative group overflow-hidden">
+                <div
+                    ref={divRef}
+                    onClick={overlayToggle}
+                    className="bg-[#F4F5F7] cursor-pointer relative group overflow-hidden">
                     <Image
                         loading="lazy"
                         className="h-80 w-full object-cover object-center"
