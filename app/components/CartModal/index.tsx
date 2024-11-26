@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from 'react';
-import { useData } from '../../context/AppContext';
-import { CartModalItem } from '..';
+import { useData } from '@/app/context/AppContext';
+import { CartModalItem } from '@/app/components';
 import Close from '@/public/assets/icons/cart-modal/close-cart.svg';
 
 import Link from "next/link";
@@ -23,7 +23,7 @@ const CartModal: React.FC = () => {
         } else if (!isNavOpen) {
             document.body.classList.remove('no-scroll');
         }
-    }, [isCartOpen])
+    }, [isCartOpen, isNavOpen])
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -36,7 +36,7 @@ const CartModal: React.FC = () => {
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
-    }, []);
+    }, [setIsCartOpen]);
 
     const handleBackgroundClick = (event: React.MouseEvent<HTMLDivElement>) => {
         const target = event.target as HTMLDivElement;

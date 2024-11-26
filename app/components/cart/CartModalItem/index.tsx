@@ -1,5 +1,5 @@
-import { useData } from "../../../context/AppContext";
-import { CartModalItemProps } from "../../../interfaces";
+import { useData } from "@/app/context/AppContext";
+import { CartModalItemProps } from "@/app/interfaces";
 
 import Link from "next/link";
 import Image from "next/image";

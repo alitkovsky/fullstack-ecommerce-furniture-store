@@ -1,4 +1,4 @@
-import { SignupProps } from "../../../interfaces"
+import { SignupProps } from "@/app/interfaces"
 
 const Signup: React.FC<SignupProps> = ({ setIsLogin }) => {
     return (

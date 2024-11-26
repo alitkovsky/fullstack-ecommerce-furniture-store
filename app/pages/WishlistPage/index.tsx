@@ -2,7 +2,7 @@ import {
     PageHeading,
     WishlistItemCard
 } from "@/app/components";
-import { useData } from "../../context/AppContext";
+import { useData } from "@/app/context/AppContext";
 
 const WishlistPage: React.FC = () => {
     const { wishlist } = useData()

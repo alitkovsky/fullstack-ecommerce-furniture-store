@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { useData } from "../../context/AppContext"
-import { ProductFeaturesComponent } from "../index";
+import { useData } from "@/app/context/AppContext"
+import { ProductFeaturesComponent } from "@/app/components/index";
 
 const AddToCartModal: React.FC = () => {
     const {
@@ -30,7 +30,7 @@ const AddToCartModal: React.FC = () => {
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
-    }, []);
+    }, [setToggleCartModal]);
 
     useEffect(() => {
         if (toggleCartModal) {

@@ -1,5 +1,5 @@
 import { ProductCard } from '@/app/components'
-import products from '../../../data/products'
+import products from '@/app/data/products'
 
 const OurProducts: React.FC = () => {
 

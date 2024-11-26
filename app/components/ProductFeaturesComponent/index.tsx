@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { useData } from "../../context/AppContext";
+import { useData } from "@/app/context/AppContext";
 import { ProductFeaturesComponentProps } from "@/app/interfaces";
 
 
@@ -33,7 +33,7 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
             ...productFeatures,
             quantity: quantity,
         })
-    }, [quantity])
+    }, [productFeatures, quantity, setProductFeatures])
 
     const plusCount = () => {
         setQuantity(prev => prev + 1)
@@ -60,7 +60,7 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
     useEffect(() => {
         setProductFeatures(initialFeatures)
         setQuantity(1)
-    }, [toggleCartModal])
+    }, [initialFeatures, setProductFeatures, toggleCartModal])
 
     return (
         <div className="flex flex-col gap-6">

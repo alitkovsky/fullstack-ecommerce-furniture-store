@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { useData } from "../../context/AppContext";
+import { useData } from "@/app/context/AppContext";
 import {
     CartPageItem,
     PageHeading

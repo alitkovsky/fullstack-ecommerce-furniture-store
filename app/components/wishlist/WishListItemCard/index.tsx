@@ -1,5 +1,5 @@
-import { WishlistItemCardProps } from '../../../interfaces'
-import { useData } from '../../../context/AppContext'
+import { WishlistItemCardProps } from '@/app/interfaces'
+import { useData } from '@/app/context/AppContext'
 
 import Link from "next/link";
 import Image from "next/image";

@@ -7,8 +7,8 @@ import Slider3 from '@/public/assets/img/home-slider/slider3.png'
 import SliderArrow from '@/public/assets/icons/slider/slider-arrow.svg'
 import { SlideItemType } from '@/app/interfaces'
 
-import '../../../slick/slick.css'
-import '../../../slick/slick-theme.css'
+import '@/app/slick/slick.css'
+import '@/app/slick/slick-theme.css'
 import Slider from "react-slick";
 
 import Image from "next/image"

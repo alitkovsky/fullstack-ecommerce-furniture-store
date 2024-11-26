@@ -1,4 +1,4 @@
-import { LoginProps } from "../../../interfaces"
+import { LoginProps } from "@/app/interfaces"
 
 const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
     return (

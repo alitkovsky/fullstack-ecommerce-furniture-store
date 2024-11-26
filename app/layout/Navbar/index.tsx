@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    });
 
     const { setIsCartOpen, isNavOpen, setIsNavOpen, wishlist, cartItems } = useData()
 
