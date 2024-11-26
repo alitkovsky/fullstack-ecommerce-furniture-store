@@ -1,6 +1,6 @@
 import { SignupProps } from "@/app/interfaces"
 
-const Signup: React.FC<SignupProps> = ({ setIsLogin }) => {
+const SignupPage: React.FC<SignupProps> = ({ setIsLogin }) => {
     return (
         <>
             <h2 className='font-semibold text-3xl mb-6'>Signup</h2>
@@ -30,4 +30,4 @@ const Signup: React.FC<SignupProps> = ({ setIsLogin }) => {
     )
 }
 
-export default Signup
+export default SignupPage
