@@ -18,63 +18,63 @@ import products from "@/app/data/products";
 import { useData } from "@/app/context/AppContext";
 import { ProductCard, ProductFeaturesComponent } from "@/app/components";
 
-const ProductPage: React.FC = () => {
-   const [activeTab, setActiveTab] = useState<number>(1);
-   
-   const { id } = useParams(); // Use 'id' instead of 'productId' to match the dynamic folder name
-   const thisProduct = products.find((prod) => prod.id === Number(id));
-
-   if (!thisProduct) {
-       return (
-           <div className="p-8">
-               <h1 className="text-2xl font-bold">Product Not Found</h1>
-               <p className="mt-4">The product you are looking for does not exist.</p>
-           </div>
-       );
-   }
-
-   const relatedProducts: ProductType[] = [
-      {
-         id: 1,
-         title: "Syltherine",
-         about: "Stylish cafe chair",
-         oldprice: 3500,
-         price: 2500,
-         discount: 30,
-         image: Product1,
+const relatedProducts: ProductType[] = [
+   {
+      id: 1,
+      title: "Syltherine",
+      about: "Stylish cafe chair",
+      oldprice: 3500,
+      price: 2500,
+      discount: 30,
+      image: Product1,
+      isnew: false
+   },
+   {
+      id: 2,
+      title: "Grifo",
+      about: "Night lamp",
+      price: 1500,
+         image: Product2,
          isnew: false
       },
-      {
-         id: 2,
+     {
+         id: 3,
+         title: "Muggo",
+         about: "Small mug",
+         price: 1500,
+         image: Product3,
+         isnew: true
+     },
+     {
+         id: 4,
          title: "Grifo",
          about: "Night lamp",
          price: 1500,
-            image: Product2,
-            isnew: false
-         },
-        {
-            id: 3,
-            title: "Muggo",
-            about: "Small mug",
-            price: 1500,
-            image: Product3,
-            isnew: true
-        },
-        {
-            id: 4,
-            title: "Grifo",
-            about: "Night lamp",
-            price: 1500,
-            image: Product2,
-            isnew: false
-        },
-   ];
+         image: Product2,
+         isnew: false
+     },
+];
 
-    const { setProductForModal } = useData();
+const ProductPage: React.FC = () => {
+   const { id } = useParams(); // Use 'id' instead of 'productId' to match the dynamic folder name
+   const thisProduct = products.find((prod) => prod.id === Number(id));
 
-    useEffect(() => {
+   const { setProductForModal } = useData();
+
+   useEffect(() => {
         if (thisProduct) setProductForModal(thisProduct);
     }, [thisProduct, setProductForModal]);
+
+   const [activeTab, setActiveTab] = useState<number>(1);
+
+   if (!thisProduct) {
+      return (
+          <div className="p-8">
+              <h1 className="text-2xl font-bold">Product Not Found</h1>
+              <p className="mt-4">The product you are looking for does not exist.</p>
+          </div>
+      );
+   };
 
     return (
         <>
