@@ -7,6 +7,6 @@ const Pagination: React.FC = () => {
             <button className="text-black bg-[#F9F1E7] rounded-lg px-8 h-12">Next</button>
         </div>
     )
-}
+};
 
-export default Pagination
+export default Pagination;

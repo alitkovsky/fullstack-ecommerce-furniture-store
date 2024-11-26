@@ -3,63 +3,72 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import Arrow from '@/public/assets/icons/arrow-to-right.svg'
-import Sofa from '@/public/assets/img/product-single/sofa.png'
-import Stars from '@/public/assets/img/product-single/stars.png'
-import Facebook from '@/public/assets/icons/social-media/facebook.svg'
-import Linkedin from '@/public/assets/icons/social-media/linkedin.svg'
-import Twitter from '@/public/assets/icons/social-media/twitter.svg'
+import Arrow from "@/public/assets/icons/arrow-to-right.svg"
+import Sofa from "@/public/assets/img/product-single/sofa.png"
+import Stars from "@/public/assets/img/product-single/stars.png"
+import Facebook from "@/public/assets/icons/social-media/facebook.svg"
+import Linkedin from "@/public/assets/icons/social-media/linkedin.svg"
+import Twitter from "@/public/assets/icons/social-media/twitter.svg"
 import { useEffect, useState } from "react";
-import Product1 from '@/public/assets/img/products/product1.png'
-import Product2 from '@/public/assets/img/products/product2.png'
-import Product3 from '@/public/assets/img/products/product3.png'
+import Product1 from "@/public/assets/img/products/product1.png"
+import Product2 from "@/public/assets/img/products/product2.png"
+import Product3 from "@/public/assets/img/products/product3.png"
 import { ProductType } from "@/app/interfaces";
 import products from "@/app/data/products";
 import { useData } from "@/app/context/AppContext";
 import { ProductCard, ProductFeaturesComponent } from "@/app/components";
 
 const ProductPage: React.FC = () => {
-    const { productId } = useParams();
-    const [activeTab, setActiveTab] = useState<number>(1)
+   const [activeTab, setActiveTab] = useState<number>(1);
+   
+   const { id } = useParams(); // Use 'id' instead of 'productId' to match the dynamic folder name
+   const thisProduct = products.find((prod) => prod.id === Number(id));
 
-    const relatedProducts: ProductType[] = [
-        {
-            id: 1,
-            title: 'Syltherine',
-            about: 'Stylish cafe chair',
-            oldprice: 3500,
-            price: 2500,
-            discount: 30,
-            image: Product1,
-            isnew: false
-        },
-        {
-            id: 2,
-            title: 'Grifo',
-            about: 'Night lamp',
-            price: 1500,
+   if (!thisProduct) {
+       return (
+           <div className="p-8">
+               <h1 className="text-2xl font-bold">Product Not Found</h1>
+               <p className="mt-4">The product you are looking for does not exist.</p>
+           </div>
+       );
+   }
+
+   const relatedProducts: ProductType[] = [
+      {
+         id: 1,
+         title: "Syltherine",
+         about: "Stylish cafe chair",
+         oldprice: 3500,
+         price: 2500,
+         discount: 30,
+         image: Product1,
+         isnew: false
+      },
+      {
+         id: 2,
+         title: "Grifo",
+         about: "Night lamp",
+         price: 1500,
             image: Product2,
             isnew: false
-        },
+         },
         {
             id: 3,
-            title: 'Muggo',
-            about: 'Small mug',
+            title: "Muggo",
+            about: "Small mug",
             price: 1500,
             image: Product3,
             isnew: true
         },
         {
             id: 4,
-            title: 'Grifo',
-            about: 'Night lamp',
+            title: "Grifo",
+            about: "Night lamp",
             price: 1500,
             image: Product2,
             isnew: false
         },
-    ]
-
-    const thisProduct = products.find((prod) => prod.id === Number(productId));
+   ];
 
     const { setProductForModal } = useData();
 
@@ -70,12 +79,12 @@ const ProductPage: React.FC = () => {
     return (
         <>
             <div className="bg-[#F9F1E7] text-[#9F9F9F] w-full p-8 lg:py-10 lg:px-20 flex gap-2 lg:gap-6">
-                <Link className="flex items-center" href='/'>Home</Link>
+                <Link className="flex items-center" href="/">Home</Link>
                 <Image loading="lazy" src={Arrow} alt="arrow" />
-                <Link className="flex items-center" href='/shop'>Shop</Link>
+                <Link className="flex items-center" href="/shop">Shop</Link>
                 <Image loading="lazy" src={Arrow} alt="arrow" />
                 <span className="w-[2px] bg-[#9F9F9F]"></span>
-                <span className="text-black">Asgaard sofa</span>
+                <span className="text-black">{thisProduct?.title}</span>
             </div>
             <div className="p-8 lg:px-20 lg:py-10 flex flex-col lg:flex-row gap-10 sm:gap-20">
                 <div className="flex flex-col sm:flex-row w-full lg:w-1/2 gap-4 sm:gap-10">
@@ -134,9 +143,9 @@ const ProductPage: React.FC = () => {
             </div>
             <div className="border-y flex flex-col gap-12 border-y-[#D9D9D9] text-[#9F9F9F] p-8 lg:py-14 lg:px-20">
                 <div className="text-xl md:text-2xl flex-wrap flex w-full gap-4 justify-center md:gap-10">
-                    <button onClick={() => setActiveTab(1)} className={`${activeTab === 1 ? 'text-black font-medium' : ''} duration-300`}>Description</button>
-                    <button onClick={() => setActiveTab(2)} className={`${activeTab === 2 ? 'text-black font-medium' : ''} duration-300`}>Additional Information</button>
-                    <button onClick={() => setActiveTab(3)} className={`${activeTab === 3 ? 'text-black font-medium' : ''} duration-300`}>Reviews [5]</button>
+                    <button onClick={() => setActiveTab(1)} className={`${activeTab === 1 ? "text-black font-medium" : ""} duration-300`}>Description</button>
+                    <button onClick={() => setActiveTab(2)} className={`${activeTab === 2 ? "text-black font-medium" : ""} duration-300`}>Additional Information</button>
+                    <button onClick={() => setActiveTab(3)} className={`${activeTab === 3 ? "text-black font-medium" : ""} duration-300`}>Reviews [5]</button>
                 </div>
                 <div className="md:px-10">
                     {activeTab === 1 && <div className="flex flex-col gap-6">
@@ -161,7 +170,7 @@ const ProductPage: React.FC = () => {
                     {relatedProducts.map((product, index) => (<ProductCard key={index} product={product} />))}
                 </div>
                 <div className="w-full flex justify-center">
-                    <button className='text-ochre border-2 border-ochre hover:bg-ochre hover:text-white duration-300 py-3 px-20 font-semibold'>Show More</button>
+                    <button className="text-ochre border-2 border-ochre hover:bg-ochre hover:text-white duration-300 py-3 px-20 font-semibold">Show More</button>
                 </div>
             </div>
         </>
