@@ -22,26 +22,29 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
 
     const handleFeatures = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.currentTarget
-        setProductFeatures({
-            ...productFeatures,
-            [isPage ? name.replace('_page', '') : name]: [value][0]
-        })
+        setProductFeatures((prevFeatures) => ({
+            ...prevFeatures,
+            [isPage ? name.replace("_page", "") : name]: value,
+        }));
     }
 
     useEffect(() => {
-        setProductFeatures({
-            ...productFeatures,
-            quantity: quantity,
-        })
-    }, [productFeatures, quantity, setProductFeatures])
+        setProductFeatures((prevFeatures) => ({
+            ...prevFeatures,
+            quantity,
+        }));
+    }, [quantity, setProductFeatures, toggleCartModal]);
 
-    const plusCount = () => {
-        setQuantity(prev => prev + 1)
-    }
+    // Initialize features and quantity only on initialFeatures change
+    useEffect(() => {
+        setProductFeatures(initialFeatures);
+        setQuantity(1);
+    }, [initialFeatures, setProductFeatures, toggleCartModal]);
+
+    const plusCount = () => setQuantity((prev) => prev + 1);
     const minusCount = () => {
-        if (quantity > 1)
-            setQuantity(prev => prev - 1)
-    }
+        if (quantity > 1) setQuantity((prev) => prev - 1);
+    };
 
     const handleAddToCart = () => {
 
@@ -56,11 +59,6 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
             setIsDisabled(false);
         }, 3000);
     }
-
-    useEffect(() => {
-        setProductFeatures(initialFeatures)
-        setQuantity(1)
-    }, [initialFeatures, setProductFeatures, toggleCartModal])
 
     return (
         <div className="flex flex-col gap-6">

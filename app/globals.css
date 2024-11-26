@@ -9,13 +9,6 @@ body {
     overflow-x: hidden !important;
 }
 
-.hero-bg {
-    background: url("../public/assets/img/hero-bg.png");
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
-}
-
 .homegrid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);

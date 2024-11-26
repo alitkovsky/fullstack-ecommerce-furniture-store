@@ -7,10 +7,15 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    backgroundImage: {
+      "hero": "url(/assets/img/hero-bg.png)",
+    },
     extend: {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "ochre": "#B88E2F",
+        "dark-text": "#333",
       },
     },
   },
