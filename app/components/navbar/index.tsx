@@ -54,13 +54,13 @@ const Navbar: React.FC = () => {
         };
     }, [isNavOpen]); // Add `isNavOpen` as a dependency
 
-    // useEffect(() => {
-    //     if (isNavOpen) {
-    //         document.body.classList.add("no-scroll");
-    //     } else {
-    //         document.body.classList.remove("no-scroll");
-    //     }
-    // }, [isNavOpen])
+    useEffect(() => {
+        if (isNavOpen) {
+            document.body.classList.add("no-scroll");
+        } else {
+            document.body.classList.remove("no-scroll");
+        }
+    }, [isNavOpen])
 
     return (
         <nav className="bg-white overflow-hidden py-6 font-medium px-8 lg:px-20 w-full">

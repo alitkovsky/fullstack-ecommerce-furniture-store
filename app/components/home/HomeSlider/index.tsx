@@ -1,51 +1,58 @@
 "use client";
 
-import { useRef } from 'react'
-import Slider1 from '@/public/assets/img/home-slider/slider1.png'
-import Slider2 from '@/public/assets/img/home-slider/slider2.png'
-import Slider3 from '@/public/assets/img/home-slider/slider3.png'
-import SliderArrow from '@/public/assets/icons/slider/slider-arrow.svg'
-import { SlideItemType } from '@/app/interfaces'
+import Image from "next/image";
+import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
-import '@/app/slick/slick.css'
-import '@/app/slick/slick-theme.css'
+import Slider1 from "@/public/assets/img/home-slider/slider1.png";
+import Slider2 from "@/public/assets/img/home-slider/slider2.png";
+import Slider3 from "@/public/assets/img/home-slider/slider3.png";
+import SliderArrow from "@/public/assets/icons/slider/slider-arrow.svg";
+import { SlideItemType } from "@/app/interfaces";
+
 import Slider from "react-slick";
+import "@/app/slick/slick.css";
+import "@/app/slick/slick-theme.css";
 
-import Image from "next/image"
 
 const HomeSlider: React.FC = () => {
+    const router = useRouter();
+    const navigateToShop = () => {
+        router.push(`/shop`);
+    };
+
     const slider = useRef<Slider | null>(null);
 
     const slides: SlideItemType[] = [
         {
             id: 1,
-            category: 'Inner Peace',
-            title: 'Bed Room',
+            category: "Inner Peace",
+            title: "Bed Room",
             image: Slider1,
-            link: '#'
+            link: "#"
         },
         {
             id: 2,
-            category: 'Inner Peace',
-            title: 'Bed Room',
+            category: "Inner Peace",
+            title: "Bed Room",
             image: Slider2,
-            link: '#'
+            link: "#"
         },
         {
             id: 3,
-            category: 'Inner Peace',
-            title: 'Bed Room',
+            category: "Inner Peace",
+            title: "Bed Room",
             image: Slider3,
-            link: '#'
+            link: "#"
         },
         {
             id: 4,
-            category: 'Inner Peace',
-            title: 'Bed Room',
+            category: "Inner Peace",
+            title: "Bed Room",
             image: Slider1,
-            link: '#'
+            link: "#"
         },
-    ]
+    ];
 
     const settings = {
         dots: true,
@@ -60,7 +67,7 @@ const HomeSlider: React.FC = () => {
         ),
         customPaging: () => (
             <div className="dot-border">
-                <div className='slider-dot'></div>
+                <div className="slider-dot"></div>
             </div>
         ),
         responsive: [
@@ -93,7 +100,9 @@ const HomeSlider: React.FC = () => {
                     <h3 className="pb-1 text-[#3A3A3A] font-bold text-3xl lg:text-[40px]">50+ Beautiful rooms
                         inspiration</h3>
                     <p className="w-11/12 pb-6 text-[#616161] font-medium">Our designer already made a lot of beautiful prototipe of rooms that inspire you</p>
-                    <button className="text-white w-fit bg-ochre border border-ochre hover:text-ochre hover:bg-transparent duration-300 font-semibold py-3 px-10">Explore More</button>
+                    <button
+                        onClick={navigateToShop}
+                        className="text-white w-fit bg-ochre border border-ochre hover:text-ochre hover:bg-transparent duration-300 font-semibold py-3 px-10">Explore More</button>
                 </div>
             </div>
             <div className="lg:col-span-2 relative">
@@ -103,10 +112,10 @@ const HomeSlider: React.FC = () => {
                             <Image loading="lazy" className={`transition-transform object-cover duration-300 ease-in-out`} src={slide.image} alt="slide" />
                             <div className={`slide-about absolute flex bottom-20 items-end left-6`}>
                                 <div className="bg-[#FFFFFFB8] z-10 gap-2 p-4 flex flex-col backdrop-blur-sm">
-                                    <span className='text-[#616161] font-medium'>{slide.id} - {slide.title}</span>
-                                    <span className='text-[#3A3A3A] font-semibold text-3xl'>{slide.category}</span>
+                                    <span className="text-[#616161] font-medium">{slide.id} - {slide.title}</span>
+                                    <span className="text-[#3A3A3A] font-semibold text-3xl">{slide.category}</span>
                                 </div>
-                                <button className='-translate-x-28 z-0 bg-ochre text-white text-2xl p-3'>
+                                <button className="-translate-x-28 z-0 bg-ochre text-white text-2xl p-3">
                                     →
                                 </button>
                             </div>
@@ -115,7 +124,7 @@ const HomeSlider: React.FC = () => {
                 </Slider>
                 <div className="flex absolute lg:-left-5 top-1/2 justify-between w-full text-ochre text-sm">
                     <button onClick={() => slider.current?.slickPrev()} className={` bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
-                        <Image className='rotate-180' src={SliderArrow} alt="arrow" />
+                        <Image className="rotate-180" src={SliderArrow} alt="arrow" />
                     </button>
                     <button onClick={() => slider.current?.slickNext()} className={`bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
                         <Image src={SliderArrow} alt="arrow" />
@@ -125,6 +134,6 @@ const HomeSlider: React.FC = () => {
 
         </div>
     )
-}
+};
 
-export default HomeSlider
+export default HomeSlider;
