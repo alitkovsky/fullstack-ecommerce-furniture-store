@@ -1,8 +1,8 @@
 import { lazy } from "react";
 
 const AuthPage = lazy(() => import("@/app/auth/page"))
-const LoginPage = lazy(() => import("@/app/auth//login/page"))
-const SignupPage = lazy(() => import("@/app/auth/signup/page"))
+import Login from "@/app/auth/login/";
+import Signup from "@/app/auth/signup/";
 const BlogPage = lazy(() => import("@/app/blog/page"))
 const CartPage = lazy(() => import("@/app/cart/page"))
 const CheckoutPage = lazy(() => import("@/app/checkout/page"))
@@ -17,8 +17,8 @@ const SearchPage = lazy(() => import("@/app/search/page"))
 
 export {
     AuthPage,
-    LoginPage,
-    SignupPage,
+    Login,
+    Signup,
     BlogPage,
     CartPage,
     CheckoutPage,

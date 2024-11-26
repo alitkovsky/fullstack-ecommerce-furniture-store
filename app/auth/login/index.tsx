@@ -1,6 +1,6 @@
 import { LoginProps } from "@/app/interfaces"
 
-const LoginPage: React.FC<LoginProps> = ({ setIsLogin }) => {
+const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
     return (
         <>
             <h2 className='font-semibold text-3xl mb-6'>Login</h2>
@@ -33,4 +33,4 @@ const LoginPage: React.FC<LoginProps> = ({ setIsLogin }) => {
     )
 }
 
-export default LoginPage
+export default Login
