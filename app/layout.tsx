@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "@/app/globals.css";
 import 'react-toastify/dist/ReactToastify.css';
 
+import { AppProvider } from "@/app/context/AppContext";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -39,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );

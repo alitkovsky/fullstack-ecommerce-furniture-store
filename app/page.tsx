@@ -3,7 +3,6 @@ import {
   AddToCartModal,
   ScrollToTop
 } from "@/app/components"
-import { AppProvider } from "@/app/context/AppContext"
 import { ToastContainer } from "react-toastify";
 import Navbar from "@/app/components/navbar";
 import HomePage from "@/app/home/page";
@@ -14,17 +13,15 @@ import { LoadingPage } from "@/app/lazyload"
 export default function Home() {
   return (
     <>
-      <AppProvider>
-        <Suspense fallback={<LoadingPage />}>
-          <Navbar />
-          <HomePage />
-          <Footer />
-          <ToastContainer />
-          <ScrollToTop />
-          <CartModal />
-          <AddToCartModal />
-        </Suspense>
-      </AppProvider>
+      <Suspense fallback={<LoadingPage />}>
+        <Navbar />
+        <HomePage />
+        <Footer />
+        <ToastContainer />
+        <ScrollToTop />
+        <CartModal />
+        <AddToCartModal />
+      </Suspense>
     </>
   );
 }

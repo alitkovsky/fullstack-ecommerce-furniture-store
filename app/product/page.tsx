@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useParams } from "next/navigation";
 import Arrow from '@/public/assets/icons/arrow-to-right.svg'
 import Sofa from '@/public/assets/img/product-single/sofa.png'
 import Stars from '@/public/assets/img/product-single/stars.png'
@@ -19,6 +19,7 @@ import { useData } from "@/app/context/AppContext";
 import { ProductCard, ProductFeaturesComponent } from "@/app/components";
 
 const ProductPage: React.FC = () => {
+    const { productId } = useParams();
     const [activeTab, setActiveTab] = useState<number>(1)
 
     const relatedProducts: ProductType[] = [
@@ -57,9 +58,6 @@ const ProductPage: React.FC = () => {
             isnew: false
         },
     ]
-
-    const router = useRouter();
-    const { productId } = router.query; // Use router.query to get dynamic params
 
     const thisProduct = products.find((prod) => prod.id === Number(productId));
 
