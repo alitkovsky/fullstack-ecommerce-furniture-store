@@ -15,9 +15,9 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
         setProductFeatures,
         productFeatures,
         initialFeatures
-    } = useData()
+    } = useData();
 
-    const [quantity, setQuantity] = useState<number>(1)
+    const [quantity, setQuantity] = useState<number>(1);
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
     const handleFeatures = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,16 +29,20 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
     }
 
     useEffect(() => {
-        setProductFeatures((prevFeatures) => ({
-            ...prevFeatures,
-            quantity,
-        }));
-    }, [quantity, setProductFeatures, toggleCartModal]);
+        setProductFeatures((prevFeatures) => {
+            if (prevFeatures.quantity !== quantity) {
+                return { ...prevFeatures, quantity };
+            }
+            return prevFeatures;
+        });
+    }, [quantity, setProductFeatures]);
 
-    // Initialize features and quantity only on initialFeatures change
+    // Initialize productFeatures and quantity when initialFeatures or toggleCartModal changes
     useEffect(() => {
-        setProductFeatures(initialFeatures);
-        setQuantity(1);
+        if (JSON.stringify(productFeatures) !== JSON.stringify(initialFeatures)) {
+            setProductFeatures(initialFeatures);
+        }
+        setQuantity(1); // Reset quantity only if initialFeatures change
     }, [initialFeatures, setProductFeatures, toggleCartModal]);
 
     const plusCount = () => setQuantity((prev) => prev + 1);
@@ -49,7 +53,11 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
     const handleAddToCart = () => {
 
         if (productForModal && productFeatures) {
-            addToCart({ cartProduct: { id: cartItems.length, product: productForModal, features: productFeatures } })
+            addToCart({ cartProduct: {
+                id: cartItems.length,
+                product: productForModal,
+                features: productFeatures
+            } })
         }
         setProductFeatures(initialFeatures)
         setQuantity(1)
@@ -58,7 +66,7 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
         setTimeout(() => {
             setIsDisabled(false);
         }, 3000);
-    }
+    };
 
     return (
         <div className="flex flex-col gap-6">
