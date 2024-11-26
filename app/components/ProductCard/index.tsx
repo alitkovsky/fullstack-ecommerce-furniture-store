@@ -31,10 +31,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const handleAddToWishlist = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         event.stopPropagation();
-        if (isInWishlist({ product })) {
-            removeFromWishlist({ product });
-        } else {
+        if (!isInWishlist({ product })) {
             addToWishlist({ product });
+        } else {
+            removeFromWishlist({ product });
         }
     };
 
@@ -51,7 +51,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         }
     };
 
-    const overlayToggle = () => {
+    const overlayToggle = (event: React.MouseEvent<HTMLDivElement>) => {
+        event.stopPropagation();
         setIsOverlayShown((prev) => !prev);
     };
 
@@ -71,11 +72,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         const handleResize = () => {
             const isLargeScreen = window.innerWidth > 1024;
             if (isLargeScreen) {
-                setIsOverlayShown(false);
+                setIsOverlayShown(false); // Ensure overlay closes on large screens
             }
         };
         window.addEventListener("resize", handleResize);
-        handleResize();
         return () => {
             window.removeEventListener("resize", handleResize);
         };
@@ -127,10 +127,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                                     <Image loading="lazy" src={Share} alt="share" />
                                     <span>Share</span>
                                 </button>
-                                <button onClick={(event) => handleAddToWishlist(event)} className="flex items-center gap-1">
-                                    {isInWishlist({ product }) ? <Image loading="lazy" src={Heart} alt="share" /> : "❤"}
-                                    <span>{isInWishlist({ product }) ? "Unlike" : "Like"}</span>
-                                </button>
+                                <button
+                                onClick={(event) => handleAddToWishlist(event)}
+                                className="flex items-center gap-1"
+                            >
+                                {isInWishlist({ product }) ? (
+                                    <Image loading="lazy" src={Heart} alt="share" />
+                                ) : (
+                                    "❤"
+                                )}
+                                <span>
+                                    {isInWishlist({ product }) ? "Unlike" : "Like"}
+                                </span>
+                            </button>
                             </div>
                         </div>
                     </div>
