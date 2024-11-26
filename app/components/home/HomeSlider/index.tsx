@@ -14,6 +14,7 @@ import Slider from "react-slick";
 import Image from "next/image"
 
 const HomeSlider: React.FC = () => {
+    const slider = useRef<Slider | null>(null);
 
     const slides: SlideItemType[] = [
         {
@@ -57,10 +58,9 @@ const HomeSlider: React.FC = () => {
                 <ul style={{ margin: "0px" }}> {dots} </ul>
             </div>
         ),
-        customPaging: (_: number) => (
+        customPaging: () => (
             <div className="dot-border">
-                <div className='slider-dot'>
-                </div>
+                <div className='slider-dot'></div>
             </div>
         ),
         responsive: [
@@ -85,8 +85,6 @@ const HomeSlider: React.FC = () => {
         ]
 
     };
-
-    const slider = useRef(null);
 
     return (
         <div className="bg-[#FCF8F3] min-h-[95vh] px-8 lg:px-20 lg:pr-0 py-10 lg:grid lg:grid-cols-3 gap-10">
@@ -116,10 +114,10 @@ const HomeSlider: React.FC = () => {
                     ))}
                 </Slider>
                 <div className="flex absolute lg:-left-5 top-1/2 justify-between w-full text-ochre text-sm">
-                    <button onClick={() => (slider?.current as any)?.slickPrev()} className={` bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
+                    <button onClick={() => slider.current?.slickPrev()} className={` bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
                         <Image className='rotate-180' src={SliderArrow} alt="arrow" />
                     </button>
-                    <button onClick={() => (slider?.current as any)?.slickNext()} className={`bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
+                    <button onClick={() => slider.current?.slickNext()} className={`bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
                         <Image src={SliderArrow} alt="arrow" />
                     </button>
                 </div>
