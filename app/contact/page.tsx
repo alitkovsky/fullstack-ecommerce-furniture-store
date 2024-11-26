@@ -3,7 +3,7 @@ import Phone from '@/public/assets/icons/contact/phone.svg'
 import Clock from '@/public/assets/icons/contact/clock.svg'
 
 import { PageHeading } from '@/app/components'
-import UpperFooter from '@/app/layout/UpperFooter'
+import UpperFooter from '@/app/components/upperfooter'
 
 import Image from "next/image";
 

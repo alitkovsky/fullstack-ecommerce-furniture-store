@@ -5,11 +5,11 @@ import {
 } from "@/app/components"
 import { AppProvider } from "@/app/context/AppContext"
 import { ToastContainer } from "react-toastify";
-import Navbar from "@/app/layout/Navbar";
-import HomePage from "@/app/pages/HomePage";
-import Footer from "@/app/layout/Footer"
+import Navbar from "@/app/components/navbar";
+import HomePage from "@/app/home/page";
+import Footer from "@/app/components/footer"
 import { Suspense } from "react"
-import { LoadingPage } from "@/app/pages"
+import { LoadingPage } from "@/app/lazyload"
 
 export default function Home() {
   return (

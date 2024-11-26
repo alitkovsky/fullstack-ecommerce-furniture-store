@@ -4,7 +4,7 @@ import {
     Pagination,
     ProductCard
 } from "@/app/components";
-import UpperFooter from "@/app/layout/UpperFooter";
+import UpperFooter from "@/app/components/upperfooter";
 import products from "@/app/data/products";
 
 const ShopPage: React.FC = () => {

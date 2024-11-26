@@ -22,15 +22,15 @@ const Navbar: React.FC = () => {
         },
         {
             item: 'Shop',
-            path: '/pages/shop',
+            path: '/shop',
         },
         {
             item: 'Blog',
-            path: '/pages/blog'
+            path: '/blog'
         },
         {
             item: 'Contact',
-            path: '/pages/ContactPage/index.tsx'
+            path: '/contact'
         },
     ]
 

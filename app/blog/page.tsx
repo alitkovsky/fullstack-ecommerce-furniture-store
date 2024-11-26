@@ -5,7 +5,7 @@ import {
 } from '@/app/components'
 import blogImg from '@/public/assets/img/blog/1.jpg'
 import Search from '@/public/assets/icons/search.svg'
-import UpperFooter from '@/app/layout/UpperFooter'
+import UpperFooter from '@/app/components/upperfooter'
 
 import Image from "next/image";
 

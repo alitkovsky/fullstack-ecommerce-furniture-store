@@ -5,7 +5,7 @@ import img from '@/public/assets/img/hero-bg.png'
 import {
     Login,
     Signup
-} from '@/app/pages';
+} from '@/app/lazyload';
 
 import Image from "next/image";
 
