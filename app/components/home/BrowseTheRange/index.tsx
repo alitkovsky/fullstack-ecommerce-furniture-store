@@ -29,7 +29,7 @@ const BrowseTheRange: React.FC = () => {
             <div className="grid lg:grid-cols-3 gap-3">
                 {range.map((item, index) => (
                     <div key={index} className="font-semibold text-xl">
-                        <Image loading="lazy" className='rounded-lg bg-cover object-cover object-left mb-6 h-[50vh] lg:h-[80vh] w-full' src={item.image} alt={item.title} />
+                        <Image loading="lazy" className='rounded-lg bg-cover object-cover object-left mb-6 h-[30vh] lg:h-[35vh] min-h-[380px] w-full' src={item.image} alt={item.title} />
                         <p>{item.title}</p>
                     </div>
                 ))}

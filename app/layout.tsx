@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Poppins } from "next/font/google";
 import "@/app/globals.css";
 import 'react-toastify/dist/ReactToastify.css';
 
-import { AppProvider } from "@/app/context/AppContext";
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-poppins"
+})
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import {
+  CartModal,
+  AddToCartModal,
+  ScrollToTop
+} from "@/app/components"
+import { ToastContainer } from "react-toastify";
+
+import { AppProvider } from "@/app/context/AppContext";
+import Navbar from "./components/navbar";
+import Footer from "@/app/components/footer"
+import { Suspense } from "react"
+import { LoadingPage } from "@/app/lazyload"
 
 export const metadata: Metadata = {
   title: "Fullstack E-commerce App",
@@ -39,9 +46,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} antialiased`}
       >
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+
+          <Suspense fallback={<LoadingPage />}>
+            <Navbar />
+            {children}
+            <ToastContainer />
+            <ScrollToTop />
+            <CartModal />
+            <AddToCartModal />
+            <Footer />
+          </Suspense>
+        </AppProvider>
       </body>
     </html>
   );
