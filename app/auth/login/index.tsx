@@ -77,7 +77,7 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
                             </div>
                         </div>
                     <div className="flex flex-col text-center text-xs text-neutral-400">
-                        <p>Don't have an account?{' '}
+                        <p>Don&apos;t have an account?{' '}
                         <span onClick={() => setIsLogin(false)} className="text-ochre cursor-pointer">Sign up</span>
                         </p>
                     </div>
