@@ -43,7 +43,7 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
             setProductFeatures(initialFeatures);
         }
         setQuantity(1); // Reset quantity only if initialFeatures change
-    }, [initialFeatures, setProductFeatures, toggleCartModal]);
+    }, [initialFeatures, setProductFeatures, toggleCartModal, productFeatures]);
 
     const plusCount = () => setQuantity((prev) => prev + 1);
     const minusCount = () => {
