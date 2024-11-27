@@ -1,4 +1,11 @@
 import type { Metadata } from "next";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs';
 import { Poppins } from "next/font/google";
 import "@/app/globals.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -30,37 +37,38 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="icon"
-          href="/assets/icon.svg"
-          type="image/<generated>"
-          sizes="<generated>"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="/assets/apple-icon.jpg"
-          type="image/<generated>"
-          sizes="<generated>"
-        />
-      </head>
-      <body
-        className={`${poppins.variable} antialiased`}
-      >
-        <AppProvider>
-
-          <Suspense fallback={<LoadingPage />}>
-            <Navbar />
-            {children}
-            <ToastContainer />
-            <ScrollToTop />
-            <CartModal />
-            <AddToCartModal />
-            <Footer />
-          </Suspense>
-        </AppProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <head>
+          <link
+            rel="icon"
+            href="/assets/icon.svg"
+            type="image/<generated>"
+            sizes="<generated>"
+          />
+          <link
+            rel="apple-touch-icon"
+            href="/assets/apple-icon.jpg"
+            type="image/<generated>"
+            sizes="<generated>"
+          />
+        </head>
+        <body
+          className={`${poppins.variable} antialiased`}
+        >
+          <AppProvider>
+            <Suspense fallback={<LoadingPage />}>
+              <Navbar />
+              {children}
+              <ToastContainer />
+              <ScrollToTop />
+              <CartModal />
+              <AddToCartModal />
+              <Footer />
+            </Suspense>
+          </AppProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 };
