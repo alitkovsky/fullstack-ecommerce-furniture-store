@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
                     ))}
                 </div>
                 <div className="hidden lg:flex gap-10">
-                    <Link href="/sign-in">
+                    <Link href="/auth">
                         <Image loading="lazy" src={User} alt="user" />
                     </Link>
                     <Link href="/search">
@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
                     <Link onClick={() => setIsNavOpen(false)} className="border-b border-b-black pb-3 w-10/12 text-center border-opacity-20" key={index} href={link.path}>{link.item}</Link>
                 ))}
                 <div className="flex mt-10 gap-10 bg-[#F9F1E7] py-4 w-full justify-center rounded-full">
-                    <Link onClick={() => setIsNavOpen(false)} href="/sign-in">
+                    <Link onClick={() => setIsNavOpen(false)} href="/auth">
                         <Image loading="lazy" src={User} alt="user" />
                     </Link>
                     <Link href="/search">

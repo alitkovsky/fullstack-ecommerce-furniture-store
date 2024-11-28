@@ -43,11 +43,20 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
                         >
                             Sign In
                         </SignIn.Action>
-                        <div className="rounded-xl bg-neutral-100 p-5">
-                            <p className="mb-4 text-center text-sm/5 text-neutral-500">
-                            Alternatively, sign in with these platforms
-                            </p>
+                        <div>
+                            <div className="mb-6 mt-6 flex items-center justify-center">
+                                <div aria-hidden="true" className="h-px w-full bg-slate-300" data-orientation="horizontal" role="separator"></div>
+                                <span className="mx-4 text-xs text-slate-11 font-normal">OR</span>
+                                <div aria-hidden="true" className="h-px w-full bg-slate-300" data-orientation="horizontal" role="separator"></div>
+                            </div>
                             <div className="space-y-2">
+                                <Clerk.Connection
+                                    name="github"
+                                    className="flex w-full items-center justify-center gap-x-3 rounded-md bg-gradient-to-b from-white to-neutral-50 px-2 py-1.5 text-sm font-medium text-neutral-950 shadow outline-none ring-1 ring-black/5 hover:to-neutral-100 focus-visible:outline-offset-2 focus-visible:outline-neutral-600 active:text-neutral-950/60"
+                                >
+                                    <svg className="-ml-1" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C7.58267 4 4 7.67255 4 12.2022C4 15.8263 6.292 18.9007 9.47133 19.9855C9.87067 20.0614 10 19.8071 10 19.5911V18.0641C7.77467 18.5603 7.31133 17.0962 7.31133 17.0962C6.94733 16.1482 6.42267 15.896 6.42267 15.896C5.69667 15.3868 6.478 15.3977 6.478 15.3977C7.28133 15.4551 7.704 16.2432 7.704 16.2432C8.41733 17.4968 9.57533 17.1345 10.032 16.9247C10.1033 16.395 10.3107 16.0327 10.54 15.8283C8.76333 15.6198 6.89533 14.9165 6.89533 11.7744C6.89533 10.8783 7.208 10.1469 7.71933 9.57274C7.63667 9.36563 7.36267 8.53106 7.79733 7.40188C7.79733 7.40188 8.46933 7.18179 9.998 8.24261C10.636 8.06079 11.32 7.96989 12 7.96647C12.68 7.96989 13.3647 8.06079 14.004 8.24261C15.5313 7.18179 16.202 7.40188 16.202 7.40188C16.6373 8.53174 16.3633 9.36632 16.2807 9.57274C16.794 10.1469 17.104 10.8789 17.104 11.7744C17.104 14.9247 15.2327 15.6185 13.4513 15.8215C13.738 16.0758 14 16.5747 14 17.3403V19.5911C14 19.8091 14.128 20.0655 14.534 19.9848C17.7107 18.8987 20 15.8249 20 12.2022C20 7.67255 16.418 4 12 4Z" fill="currentColor"></path></svg>
+                                    Login with GitHub
+                                </Clerk.Connection>
                                 <Clerk.Connection
                                     name="google"
                                     className="flex w-full items-center justify-center gap-x-3 rounded-md bg-gradient-to-b from-white to-neutral-50 px-2 py-1.5 text-sm font-medium text-neutral-950 shadow outline-none ring-1 ring-black/5 hover:to-neutral-100 focus-visible:outline-offset-2 focus-visible:outline-neutral-600 active:text-neutral-950/60"
@@ -73,65 +82,15 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
                                     </svg>
                                     Login with Google
                                 </Clerk.Connection>
-                                </div>
                             </div>
                         </div>
+                    </div>
                     <div className="flex flex-col text-center text-xs text-neutral-400">
                         <p>Don&apos;t have an account?{' '}
                         <span onClick={() => setIsLogin(false)} className="text-ochre cursor-pointer">Sign up</span>
                         </p>
                     </div>
                 </div>
-            </SignIn.Step>
-            <SignIn.Step
-                name="verifications"
-                className="w-full space-y-6 rounded-2xl bg-neutral-900 bg-[radial-gradient(circle_at_50%_0%,theme(colors.white/10%),transparent)] px-4 py-10 ring-1 ring-inset ring-white/5 sm:w-96 sm:px-8"
-            >
-                <header className="text-center">
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 40 40"
-                    className="mx-auto size-10"
-                    >
-                    <mask id="a" width="40" height="40" x="0" y="0" maskUnits="userSpaceOnUse">
-                        <circle cx="20" cy="20" r="20" fill="#D9D9D9" />
-                    </mask>
-                    <g fill="#fff" mask="url(#a)">
-                        <path d="M43.5 3a.5.5 0 0 0 0-1v1Zm0-1h-46v1h46V2ZM43.5 8a.5.5 0 0 0 0-1v1Zm0-1h-46v1h46V7ZM43.5 13a.5.5 0 0 0 0-1v1Zm0-1h-46v1h46v-1ZM43.5 18a.5.5 0 0 0 0-1v1Zm0-1h-46v1h46v-1ZM43.5 23a.5.5 0 0 0 0-1v1Zm0-1h-46v1h46v-1ZM43.5 28a.5.5 0 0 0 0-1v1Zm0-1h-46v1h46v-1ZM43.5 33a.5.5 0 0 0 0-1v1Zm0-1h-46v1h46v-1ZM43.5 38a.5.5 0 0 0 0-1v1Zm0-1h-46v1h46v-1Z" />
-                        <path d="M27 3.5a1 1 0 1 0 0-2v2Zm0-2h-46v2h46v-2ZM25 8.5a1 1 0 1 0 0-2v2Zm0-2h-46v2h46v-2ZM23 13.5a1 1 0 1 0 0-2v2Zm0-2h-46v2h46v-2ZM21.5 18.5a1 1 0 1 0 0-2v2Zm0-2h-46v2h46v-2ZM20.5 23.5a1 1 0 1 0 0-2v2Zm0-2h-46v2h46v-2ZM22.5 28.5a1 1 0 1 0 0-2v2Zm0-2h-46v2h46v-2ZM25 33.5a1 1 0 1 0 0-2v2Zm0-2h-46v2h46v-2ZM27 38.5a1 1 0 1 0 0-2v2Zm0-2h-46v2h46v-2Z" />
-                    </g>
-                    </svg>
-                    <h1 className="mt-4 text-xl font-medium tracking-tight text-white">
-                    Verify email code
-                    </h1>
-                </header>
-                <Clerk.GlobalError className="block text-sm text-red-400" />
-                <SignIn.Strategy name="email_code">
-                    <Clerk.Field name="code" className="space-y-2">
-                    <Clerk.Label className="text-sm font-medium text-white">Email code</Clerk.Label>
-                    <Clerk.Input
-                        required
-                        className="w-full rounded-md bg-neutral-900 px-3.5 py-2 text-sm text-white outline-none ring-1 ring-inset ring-zinc-700 hover:ring-zinc-600 focus:bg-transparent focus:ring-[1.5px] focus:ring-blue-400 data-[invalid]:ring-red-400"
-                    />
-                    <Clerk.FieldError className="block text-sm text-red-400" />
-                    </Clerk.Field>
-                    <SignIn.Action
-                    submit
-                    className="relative isolate w-full rounded-md bg-blue-500 px-3.5 py-1.5 text-center text-sm font-medium text-white shadow-[0_1px_0_0_theme(colors.white/10%)_inset,0_0_0_1px_theme(colors.white/5%)] outline-none before:absolute before:inset-0 before:-z-10 before:rounded-md before:bg-white/5 before:opacity-0 hover:before:opacity-100 focus-visible:outline-[1.5px] focus-visible:outline-offset-2 focus-visible:outline-blue-400 active:text-white/70 active:before:bg-black/10"
-                    >
-                    Finish registration
-                    </SignIn.Action>
-                </SignIn.Strategy>
-                <p className="text-center text-sm text-zinc-400">
-                    Have an account?{' '}
-                    <Clerk.Link
-                    navigate="sign-in"
-                    className="font-medium text-white decoration-white/20 underline-offset-4 outline-none hover:underline focus-visible:underline"
-                    >
-                    Sign in
-                    </Clerk.Link>
-                </p>
             </SignIn.Step>
         </SignIn.Root>
     )
