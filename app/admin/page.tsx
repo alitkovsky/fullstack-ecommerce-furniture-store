@@ -1,6 +1,6 @@
 const AdminPanel = () => {
    return (
-      <></>
+      <div>Admin</div>
    )
 };
 

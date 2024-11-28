@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+
 import Icon from "@/public/assets/website-icon/icon.svg";
 import User from "@/public/assets/icons/user.svg";
 import Cart from "@/public/assets/icons/cart.svg";
@@ -76,9 +78,19 @@ const Navbar: React.FC = () => {
                     ))}
                 </div>
                 <div className="hidden lg:flex gap-10">
-                    <Link href="/auth">
+                    {/* <Link href="/auth">
                         <Image loading="lazy" src={User} alt="user" />
-                    </Link>
+                    </Link> */}
+                    <SignedIn>
+                        {/* Mount the UserButton component */}
+                        <UserButton />
+                    </SignedIn>
+                    <SignedOut>
+                        {/* Signed out users get sign in button */}
+                        <SignInButton>
+                            <Image loading="lazy" src={User} alt="user" />
+                        </SignInButton>
+                    </SignedOut>
                     <Link href="/search">
                         <Image loading="lazy" src={Search} alt="search" />
                     </Link>
@@ -110,9 +122,19 @@ const Navbar: React.FC = () => {
                     <Link onClick={() => setIsNavOpen(false)} className="border-b border-b-black pb-3 w-10/12 text-center border-opacity-20" key={index} href={link.path}>{link.item}</Link>
                 ))}
                 <div className="flex mt-10 gap-10 bg-[#F9F1E7] py-4 w-full justify-center rounded-full">
-                    <Link onClick={() => setIsNavOpen(false)} href="/auth">
+                    {/* <Link onClick={() => setIsNavOpen(false)} href="/auth">
                         <Image loading="lazy" src={User} alt="user" />
-                    </Link>
+                    </Link> */}
+                    <SignedIn>
+                        {/* Mount the UserButton component */}
+                        <UserButton />
+                    </SignedIn>
+                    <SignedOut>
+                        {/* Signed out users get sign in button */}
+                        <SignInButton>
+                            <Image loading="lazy" src={User} alt="user" />
+                        </SignInButton>
+                    </SignedOut>
                     <Link href="/search">
                         <Image loading="lazy" src={Search} alt="search" />
                     </Link>
