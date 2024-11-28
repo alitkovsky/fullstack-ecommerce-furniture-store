@@ -1,7 +1,7 @@
 "use client";
 
 import * as Clerk from "@clerk/elements/common";
-import * as SignIn from "@clerk/elements/sign-up";
+import * as SignIn from "@clerk/elements/sign-in";
 
 import { LoginProps } from "@/app/interfaces";
 
@@ -10,13 +10,12 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
         <SignIn.Root>
             <SignIn.Step
                 name="start"
-                className=""
+                 className="border flex flex-col justify-between min-h-[50vh] rounded-xl p-4 lg:px-8 lg:pt-10 pb-4"
             >
-                <header>
-                    <h2 className="font-semibold text-3xl mb-6">Sign in</h2>
-                </header>
                 <Clerk.GlobalError className="block text-sm text-red-400" />
-                <div className="border flex flex-col justify-between min-h-[50vh] rounded-xl p-4 lg:px-8 lg:pt-10 pb-4">
+                    <header className="self-center">
+                        <h2 className="font-semibold text-3xl">Sign in</h2>
+                    </header>
                     <div className="flex flex-col gap-6">
                         <Clerk.Field name="emailAddress" className="space-y-2 text-sm">
                             <Clerk.Label className="font-semibold mb-1">Email address</Clerk.Label>
@@ -36,7 +35,6 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
                             />
                             <Clerk.FieldError className="block text-sm text-red-400" />
                         </Clerk.Field>
-                        <SignIn.Captcha className="empty:hidden" />
                         <SignIn.Action
                             submit
                             className="relative isolate w-full rounded bg-ochre px-3.5 py-1.5 text-center text-sm font-semibold border-ochre border hover:bg-white hover:text-ochre duration-300 text-white shadow-[0_1px_0_0_theme(colors.white/10%)_inset,0_0_0_1px_theme(colors.white/5%)] outline-none before:absolute before:inset-0 before:-z-10 before:rounded-md before:bg-white/5 before:opacity-0 hover:before:opacity-100 focus-visible:outline-[1.5px] focus-visible:outline-offset-2 focus-visible:outline-blue-400 active:text-white/70 active:before:bg-black/10"
@@ -90,7 +88,6 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
                         <span onClick={() => setIsLogin(false)} className="text-ochre cursor-pointer">Sign up</span>
                         </p>
                     </div>
-                </div>
             </SignIn.Step>
         </SignIn.Root>
     )
