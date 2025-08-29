@@ -4,6 +4,6 @@ const LoadingPage: React.FC = () => {
             <h1>Loading...</h1>
         </div>
     )
-}
+};
 
-export default LoadingPage
+export default LoadingPage;

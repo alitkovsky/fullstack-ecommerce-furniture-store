@@ -7,8 +7,14 @@ const isProtectedRoute = createRouteMatcher([
   "/admin(.*)",
 ]);
 
-export default clerkMiddleware((auth, req) => {
-  if (isProtectedRoute(req)) auth.protect();
+export default clerkMiddleware(async (auth, req) => {
+  if (isProtectedRoute(req)) {
+    console.log('🔒 Protected admin route accessed:', req.url);
+    
+    // Only ensure user is authenticated - role check happens at page level
+    await auth.protect();
+    console.log('✅ User is authenticated - allowing request');
+  }
 });
 
 export const config = {

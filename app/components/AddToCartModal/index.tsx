@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useData } from "@/app/context/AppContext"
-import { ProductFeaturesComponent } from "@/app/components/index";
+import ProductFeaturesComponent from "@/app/components/ProductFeaturesComponent";
 
 const AddToCartModal: React.FC = () => {
     const {

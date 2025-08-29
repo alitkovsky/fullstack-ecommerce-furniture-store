@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
                 <div className="flex flex-col gap-6 lg:gap-12">
                     <p className="text-[#9F9F9F] font-medium">Newsletter</p>
                     <form className="text-sm flex flex-col lg:flex-row gap-4 w-full" action="">
-                        <input className="focus:outline-none w-full sm:w-fit lg:w-52 border-b-[1px] border-black" placeholder="Enter Your Email Address" type="text" />
+                        <input className="focus:outline-hidden w-full sm:w-fit lg:w-52 border-b-[1px] border-black" placeholder="Enter Your Email Address" type="text" />
                         <button className="border-b-[1px] w-fit border-black font-medium">SUBSCRIBE</button>
                     </form>
                 </div>

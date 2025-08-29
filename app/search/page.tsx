@@ -1,4 +1,4 @@
-import { PageHeading } from "@/app/components"
+import PageHeading from "@/app/components/PageHeading";
 
 const SearchPage: React.FC = () => {
   return (
@@ -9,6 +9,6 @@ const SearchPage: React.FC = () => {
       </div>
     </div>
   )
-}
+};
 
-export default SearchPage
+export default SearchPage;

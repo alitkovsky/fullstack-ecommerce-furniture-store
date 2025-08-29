@@ -1,0 +1,428 @@
+
+> fullstack-ecommerce-furniture-store@0.1.0 dev
+> next dev
+
+ ⚠ Warning: Found multiple lockfiles. Selecting /Users/alitkovsky/Documents/GitHub/package-lock.json.
+   Consider removing the lockfiles at:
+   * /Users/alitkovsky/Documents/GitHub/fullstack-ecommerce-furniture-store/package-lock.json
+
+   ▲ Next.js 15.4.6
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.178.78:3000
+   - Environments: .env.local, .env
+
+ ✓ Starting...
+ ✓ Ready in 3.5s
+ ✓ Compiled /middleware in 339ms (218 modules)
+ ○ Compiling /api/products ...
+ ✓ Compiled /api/products in 1584ms (285 modules)
+ GET /api/products 200 in 2260ms
+ ○ Compiling /api/products/[id] ...
+ ✓ Compiled /api/products/[id] in 650ms (287 modules)
+ GET /api/products/689de4ed6928c9e0f24ba4eb 200 in 1977ms
+ ✓ Compiled in 146ms (505 modules)
+ GET /api/products/689de59a8203710cea7de437 200 in 111ms
+ GET /api/products 200 in 90ms
+ GET /api/products/689de4ed6928c9e0f24ba4eb 200 in 39ms
+ GET /api/products 200 in 69ms
+ GET /api/products/689de4ed6928c9e0f24ba4eb 200 in 47ms
+ GET /api/products 200 in 45ms
+ GET /api/products/689de4ed6928c9e0f24ba4eb 200 in 33ms
+ ○ Compiling / ...
+ ✓ Compiled / in 6.4s (2202 modules)
+OurProducts: Render - loading: true products: 0 error: null
+ GET / 200 in 7214ms
+ ✓ Compiled in 1396ms (914 modules)
+ ✓ Compiled in 228ms (914 modules)
+ ✓ Compiled in 269ms (914 modules)
+ ✓ Compiled in 214ms (914 modules)
+ ✓ Compiled in 235ms (914 modules)
+Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection: Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection:  Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ○ Compiling /admin ...
+ ✓ Compiled /admin in 2.8s (2648 modules)
+ GET /admin 200 in 3881ms
+Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection: Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection:  Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ○ Compiling /admin/products ...
+ ✓ Compiled /admin/products in 517ms (2652 modules)
+ GET /admin/products 200 in 1390ms
+ ✓ Compiled in 462ms (1004 modules)
+Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection: Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection:  Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ○ Compiling /admin/products ...
+ ✓ Compiled /admin/products in 605ms (1659 modules)
+ GET /admin/products 200 in 1645ms
+ ✓ Compiled in 420ms (1004 modules)
+Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection: Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection:  Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ GET /admin/products 200 in 286ms
+ ✓ Compiled in 1621ms (1004 modules)
+ ✓ Compiled in 352ms (1004 modules)
+ ✓ Compiled in 304ms (1004 modules)
+ ✓ Compiled in 234ms (1004 modules)
+ ✓ Compiled in 183ms (1004 modules)
+ ✓ Compiled in 201ms (1004 modules)
+Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection: Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection:  Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ○ Compiling /admin ...
+ ✓ Compiled /admin in 1378ms (2652 modules)
+ GET /admin 200 in 2119ms
+Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection: Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection:  Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ✓ Compiled /admin/products in 262ms (1664 modules)
+ GET /admin/products 200 in 1129ms
+ ✓ Compiled in 212ms (1005 modules)
+Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection: Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection:  Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ GET /admin 200 in 124ms
+Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection: Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection:  Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ GET /admin 200 in 91ms
+Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection: Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection:  Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ GET /admin 200 in 95ms
+Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection: Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ ⨯ unhandledRejection:  Error: NEXT_HTTP_ERROR_FALLBACK;404
+    at notFound (../../../src/client/components/not-found.ts:25:16)
+    at eval (middleware.ts:11:34)
+  23 | export function notFound(): never {
+  24 |   // eslint-disable-next-line no-throw-literal
+> 25 |   const error = new Error(DIGEST) as HTTPAccessFallbackError
+     |                ^
+  26 |   ;(error as HTTPAccessFallbackError).digest = DIGEST
+  27 |
+  28 |   throw error {
+  digest: 'NEXT_HTTP_ERROR_FALLBACK;404'
+}
+ GET /admin 200 in 100ms
+[?25h

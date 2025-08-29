@@ -3,10 +3,9 @@
 import Link from "next/link";
 
 import { useData } from "@/app/context/AppContext";
-import {
-    CartPageItem,
-    PageHeading
-} from "@/app/components";
+
+import CartPageItem from "@/app/components/cart/CartPageItem";
+import PageHeading from "@/app/components/PageHeading";
 
 const CartPage: React.FC = () => {
     const { cartItems } = useData()
@@ -50,6 +49,6 @@ const CartPage: React.FC = () => {
             </div>
         </>
     )
-}
+};
 
-export default CartPage
+export default CartPage;

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useData } from "@/app/context/AppContext";
-import { PageHeading } from "@/app/components";
+import PageHeading from "@/app/components/PageHeading";
 
 const CheckoutPage: React.FC = () => {
     const [selectedPayment, setSelectedPayment] = useState<string>("");
@@ -24,16 +24,16 @@ const CheckoutPage: React.FC = () => {
                             <div className="flex gap-6 lg:gap-0 flex-col lg:flex-row justify-between">
                                 <div className="flex flex-col gap-4">
                                     <label className="font-medium" htmlFor="firstname">First Name</label>
-                                    <input className="border focus:outline-none rounded-lg p-4 border-[#9F9F9F]" id="firstname" type="text" />
+                                    <input className="border focus:outline-hidden rounded-lg p-4 border-[#9F9F9F]" id="firstname" type="text" />
                                 </div>
                                 <div className="flex flex-col gap-4">
                                     <label className="font-medium" htmlFor="lastname">Last Name</label>
-                                    <input className="border focus:outline-none rounded-lg p-4 border-[#9F9F9F]" id="lastname" type="text" />
+                                    <input className="border focus:outline-hidden rounded-lg p-4 border-[#9F9F9F]" id="lastname" type="text" />
                                 </div>
                             </div>
                             <div className="flex flex-col gap-4">
                                 <label className="font-medium" htmlFor="company">Company Name (Optional)</label>
-                                <input className="border focus:outline-none rounded-lg p-4 border-[#9F9F9F]" id="company" type="text" />
+                                <input className="border focus:outline-hidden rounded-lg p-4 border-[#9F9F9F]" id="company" type="text" />
                             </div>
                             <div className="flex flex-col gap-4">
                                 <label className="font-medium" htmlFor="region">Country / Region</label>
@@ -45,11 +45,11 @@ const CheckoutPage: React.FC = () => {
                             </div>
                             <div className="flex flex-col gap-4">
                                 <label className="font-medium" htmlFor="street">Street address</label>
-                                <input className="border focus:outline-none rounded-lg p-4 border-[#9F9F9F]" id="street" type="text" />
+                                <input className="border focus:outline-hidden rounded-lg p-4 border-[#9F9F9F]" id="street" type="text" />
                             </div>
                             <div className="flex flex-col gap-4">
                                 <label className="font-medium" htmlFor="city">Town / City</label>
-                                <input className="border focus:outline-none rounded-lg p-4 border-[#9F9F9F]" id="city" type="text" />
+                                <input className="border focus:outline-hidden rounded-lg p-4 border-[#9F9F9F]" id="city" type="text" />
                             </div>
                             <div className="flex flex-col gap-4">
                                 <label className="font-medium" htmlFor="province">Province</label>
@@ -61,18 +61,18 @@ const CheckoutPage: React.FC = () => {
                             </div>
                             <div className="flex flex-col gap-4">
                                 <label className="font-medium" htmlFor="zip">ZIP code</label>
-                                <input className="border focus:outline-none rounded-lg p-4 border-[#9F9F9F]" id="zip" type="text" />
+                                <input className="border focus:outline-hidden rounded-lg p-4 border-[#9F9F9F]" id="zip" type="text" />
                             </div>
                             <div className="flex flex-col gap-4">
                                 <label className="font-medium" htmlFor="phone">Phone</label>
-                                <input className="border focus:outline-none rounded-lg p-4 border-[#9F9F9F]" id="phone" type="text" />
+                                <input className="border focus:outline-hidden rounded-lg p-4 border-[#9F9F9F]" id="phone" type="text" />
                             </div>
                             <div className="flex flex-col gap-4">
                                 <label className="font-medium" htmlFor="email">Email address</label>
-                                <input className="border focus:outline-none rounded-lg p-4 border-[#9F9F9F]" id="email" type="text" />
+                                <input className="border focus:outline-hidden rounded-lg p-4 border-[#9F9F9F]" id="email" type="text" />
                             </div>
                             <div className="flex flex-col gap-4 mt-6">
-                                <input placeholder="Additional information" className="border focus:outline-none rounded-lg p-4 border-[#9F9F9F]" id="additional" type="text" />
+                                <input placeholder="Additional information" className="border focus:outline-hidden rounded-lg p-4 border-[#9F9F9F]" id="additional" type="text" />
                             </div>
                         </div>
                     </div>
@@ -124,6 +124,6 @@ const CheckoutPage: React.FC = () => {
             </div>
         </>
     )
-}
+};
 
-export default CheckoutPage
+export default CheckoutPage;

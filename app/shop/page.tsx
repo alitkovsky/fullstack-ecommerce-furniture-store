@@ -1,13 +1,33 @@
-import {
-    FilterBar,
-    PageHeading,
-    Pagination,
-    ProductCard
-} from "@/app/components";
+"use client";
+
+import { useEffect, useState } from "react";
+
+import FilterBar from "@/app/components/shop/FilterBar"
+import Pagination from "@/app/components/Pagination";
+import ProductCard from "@/app/components/ProductCard/new";
+import PageHeading from "@/app/components/PageHeading";
 import UpperFooter from "@/app/components/upperfooter";
-import products from "@/app/data/products";
 
 const ShopPage: React.FC = () => {
+    const [products, setProducts] = useState<any[]>([]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch("/api/products");
+                if (!response.ok) {
+                    throw new Error("Failed to fetch products");
+                }
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                console.error("Error fetching products:", error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
     return (
         <>
             <PageHeading mainhead="Shop" />

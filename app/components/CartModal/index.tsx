@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useData } from '@/app/context/AppContext';
-import { CartModalItem } from '@/app/components';
+import CartModalItem from '@/app/components/cart/CartModalItem';
 import Close from '@/public/assets/icons/cart-modal/close-cart.svg';
 
 import Link from "next/link";

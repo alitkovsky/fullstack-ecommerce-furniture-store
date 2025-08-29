@@ -1,180 +1,381 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { useParams } from "next/navigation";
-import Arrow from "@/public/assets/icons/arrow-to-right.svg"
-import Sofa from "@/public/assets/img/product-single/sofa.png"
-import Stars from "@/public/assets/img/product-single/stars.png"
-import Facebook from "@/public/assets/icons/social-media/facebook.svg"
-import Linkedin from "@/public/assets/icons/social-media/linkedin.svg"
-import Twitter from "@/public/assets/icons/social-media/twitter.svg"
 import { useEffect, useState } from "react";
-import Product1 from "@/public/assets/img/products/product1.png"
-import Product2 from "@/public/assets/img/products/product2.png"
-import Product3 from "@/public/assets/img/products/product3.png"
-import { ProductType } from "@/app/interfaces";
-import products from "@/app/data/products";
+import { useParams, useRouter } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 import { useData } from "@/app/context/AppContext";
-import { ProductCard, ProductFeaturesComponent } from "@/app/components";
+import { formatCurrency } from "@/lib/formatters";
 
-const relatedProducts: ProductType[] = [
-   {
-      id: 1,
-      title: "Syltherine",
-      about: "Stylish cafe chair",
-      oldprice: 3500,
-      price: 2500,
-      discount: 30,
-      image: Product1,
-      isnew: false
-   },
-   {
-      id: 2,
-      title: "Grifo",
-      about: "Night lamp",
-      price: 1500,
-         image: Product2,
-         isnew: false
-      },
-     {
-         id: 3,
-         title: "Muggo",
-         about: "Small mug",
-         price: 1500,
-         image: Product3,
-         isnew: true
-     },
-     {
-         id: 4,
-         title: "Grifo",
-         about: "Night lamp",
-         price: 1500,
-         image: Product2,
-         isnew: false
-     },
-];
-
-const ProductPage: React.FC = () => {
-   const { id } = useParams(); // Use 'id' instead of 'productId' to match the dynamic folder name
-   const thisProduct = products.find((prod) => prod.id === Number(id));
-
-   const { setProductForModal } = useData();
-
-   useEffect(() => {
-        if (thisProduct) setProductForModal(thisProduct);
-    }, [thisProduct, setProductForModal]);
-
-   const [activeTab, setActiveTab] = useState<number>(1);
-
-   if (!thisProduct) {
-      return (
-          <div className="p-8">
-              <h1 className="text-2xl font-bold">Product Not Found</h1>
-              <p className="mt-4">The product you are looking for does not exist.</p>
-          </div>
-      );
-   };
-
-    return (
-        <>
-            <div className="bg-[#F9F1E7] text-[#9F9F9F] w-full p-8 lg:py-10 lg:px-20 flex gap-2 lg:gap-6">
-                <Link className="flex items-center" href="/">Home</Link>
-                <Image loading="lazy" src={Arrow} alt="arrow" />
-                <Link className="flex items-center" href="/shop">Shop</Link>
-                <Image loading="lazy" src={Arrow} alt="arrow" />
-                <span className="w-[2px] bg-[#9F9F9F]"></span>
-                <span className="text-black">{thisProduct?.title}</span>
-            </div>
-            <div className="p-8 lg:px-20 lg:py-10 flex flex-col lg:flex-row gap-10 sm:gap-20">
-                <div className="flex flex-col sm:flex-row w-full lg:w-1/2 gap-4 sm:gap-10">
-                    <div className="grid grid-cols-4 sm:flex sm:flex-col gap-2 sm:gap-6 w-full sm:w-2/12">
-                        <Image loading="lazy" className="bg-[#F9F1E7] object-cover h-16 sm:h-24 w-full sm:w-24 rounded-lg sm:rounded-xl" src={Sofa} alt="sofa" />
-                        <Image loading="lazy" className="bg-[#F9F1E7] object-cover h-16 sm:h-24 w-full sm:w-24 rounded-lg sm:rounded-xl" src={Sofa} alt="sofa" />
-                        <Image loading="lazy" className="bg-[#F9F1E7] object-cover h-16 sm:h-24 w-full sm:w-24 rounded-lg sm:rounded-xl" src={Sofa} alt="sofa" />
-                        <Image loading="lazy" className="bg-[#F9F1E7] object-cover h-16 sm:h-24 w-full sm:w-24 rounded-lg sm:rounded-xl" src={Sofa} alt="sofa" />
-                    </div>
-                    <Image loading="lazy" className="bg-[#F9F1E7] order-first sm:order-last w-full sm:w-9/12 object-cover rounded-lg sm:rounded-xl h-[50vh] sm:h-[70vh]" src={thisProduct?.image || Sofa} alt={thisProduct?.title + "_image"} />
-                </div>
-                <div className="w-full lg:w-1/2 flex flex-col gap-5">
-                    <h3 className="text-[42px]">{thisProduct?.title}</h3>
-                    <p className="text-[#9F9F9F] text-2xl">{thisProduct?.price}</p>
-                    <div className="flex gap-3">
-                        <Image loading="lazy" src={Stars} alt="stars" />
-                        <span className="w-[1px] bg-[#9F9F9F]"></span>
-                        <span className="text-sm text-[#9F9F9F]">5 Customer Review</span>
-                    </div>
-                    <p className="w-10/12">Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.</p>
-                    <ProductFeaturesComponent isPage={true} />
-                    <span className="h-[1px] bg-[#D9D9D9] my-8"></span>
-                    <div className="text-[#9F9F9F] flex flex-col gap-4">
-                        <div className="flex gap-3">
-                            <span className="w-20">SKU</span>
-                            <span>:</span>
-                            <span>SS001</span>
-                        </div>
-                        <div className="flex gap-3">
-                            <span className="w-20">Category</span>
-                            <span>:</span>
-                            <span>Sofas</span>
-                        </div>
-                        <div className="flex gap-3">
-                            <span className="w-20">Tags</span>
-                            <span>:</span>
-                            <span>Sofa, Chair, Home, Shop</span>
-                        </div>
-                        <div className="flex gap-3">
-                            <span className="w-20">Share</span>
-                            <span>:</span>
-                            <div className="text-black flex gap-4 text-2xl">
-                                <a href="#">
-                                    <Image src={Facebook} alt="facebook" />
-                                </a>
-                                <a href="#">
-                                    <Image src={Linkedin} alt="linkedin" />
-                                </a>
-                                <a href="#">
-                                    <Image src={Twitter} alt="twitter" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="border-y flex flex-col gap-12 border-y-[#D9D9D9] text-[#9F9F9F] p-8 lg:py-14 lg:px-20">
-                <div className="text-xl md:text-2xl flex-wrap flex w-full gap-4 justify-center md:gap-10">
-                    <button onClick={() => setActiveTab(1)} className={`${activeTab === 1 ? "text-black font-medium" : ""} duration-300`}>Description</button>
-                    <button onClick={() => setActiveTab(2)} className={`${activeTab === 2 ? "text-black font-medium" : ""} duration-300`}>Additional Information</button>
-                    <button onClick={() => setActiveTab(3)} className={`${activeTab === 3 ? "text-black font-medium" : ""} duration-300`}>Reviews [5]</button>
-                </div>
-                <div className="md:px-10">
-                    {activeTab === 1 && <div className="flex flex-col gap-6">
-                        <p>Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn portable active stereo speaker takes the unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road.</p>
-                        <p>Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound that is both articulate and pronounced. The analogue knobs allow you to fine tune the controls to your personal preferences while the guitar-influenced leather strap enables easy and stylish travel.</p>
-                    </div>}
-                    {activeTab === 2 && <div className="flex flex-col gap-6">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, unde.</p>
-                        <p>Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn portable active stereo speaker takes the unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road.</p>
-                        <p>Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound that is both articulate and pronounced. The analogue knobs allow you to fine tune the controls to your personal preferences while the guitar-influenced leather strap enables easy and stylish travel.</p>
-                    </div>}
-                    {activeTab === 3 && <div className="flex flex-col gap-6">
-                        <p>Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn portable active stereo speaker takes the unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road.</p>
-                        <p>Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound that is both articulate and pronounced. The analogue knobs allow you to fine tune the controls to your personal preferences while the guitar-influenced leather strap enables easy and stylish travel.</p>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto, ad odio dolor quos eius quasi consequuntur repellendus. Porro, accusantium, magnam totam, aut accusamus voluptas ipsam saepe libero eligendi numquam nisi.</p>
-                    </div>}
-                </div>
-            </div>
-            <div className="p-8 lg:px-20 lg:py-10">
-                <h4 className="text-4xl font-medium text-center">Related Products</h4>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 py-10">
-                    {relatedProducts.map((product, index) => (<ProductCard key={index} product={product} />))}
-                </div>
-                <div className="w-full flex justify-center">
-                    <button className="text-ochre border-2 border-ochre hover:bg-ochre hover:text-white duration-300 py-3 px-20 font-semibold">Show More</button>
-                </div>
-            </div>
-        </>
-    )
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  additionalInfo?: string;
+  priceInCents: number;
+  oldPriceInCents?: number;
+  discountPercentage?: number;
+  images: string[];
+  imagePath?: string;
+  isNew: boolean;
+  isAvailableForPurchase: boolean;
+  inventory: number;
+  category?: string;
+  collectionIDs: string[];
+  tag: string[];
+  sku: string;
+  weight?: number;
+  dimensions?: {
+    length: number;
+    width: number;
+    height: number;
+  };
+  createdAt: string;
+  updatedAt: string;
 }
 
-export default ProductPage;
+const ProductDetailPage: React.FC = () => {
+  const params = useParams();
+  const router = useRouter();
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+
+  const {
+    addToWishlist,
+    isInWishlist,
+    removeFromWishlist,
+    setToggleCartModal,
+    setProductForModal
+  } = useData();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      if (!params.id || Array.isArray(params.id)) {
+        setError('Invalid product ID');
+        setLoading(false);
+        return;
+      }
+      
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const response = await fetch(`/api/products/${params.id}`);
+        
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error('Product not found');
+          }
+          throw new Error(`Failed to fetch product: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setProduct(data);
+      } catch (err) {
+        console.error('Error fetching product:', err);
+        setError(err instanceof Error ? err.message : 'Failed to fetch product');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [params.id]);
+
+  const handleAddToCart = () => {
+    if (product) {
+      setProductForModal({ ...product, quantity });
+      setToggleCartModal(true);
+    }
+  };
+
+  const handleWishlistToggle = () => {
+    if (product) {
+      if (isInWishlist({ product })) {
+        removeFromWishlist({ product });
+      } else {
+        addToWishlist({ product });
+      }
+    }
+  };
+
+  const handleShare = () => {
+    if (typeof window !== "undefined" && product) {
+      const shareLink = `${window.location.origin}/products/${product.id}`;
+      if (navigator.share) {
+        navigator.share({
+          title: product.name,
+          text: product.description,
+          url: shareLink,
+        });
+      } else {
+        // Fallback to clipboard
+        navigator.clipboard.writeText(shareLink);
+        alert('Product link copied to clipboard!');
+      }
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="aspect-square bg-gray-200 animate-pulse rounded-lg"></div>
+            <div className="space-y-4">
+              <div className="h-8 bg-gray-200 animate-pulse rounded"></div>
+              <div className="h-4 bg-gray-200 animate-pulse rounded w-3/4"></div>
+              <div className="h-6 bg-gray-200 animate-pulse rounded w-1/2"></div>
+              <div className="h-12 bg-gray-200 animate-pulse rounded"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <Link 
+            href="/shop" 
+            className="inline-block px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+          >
+            Back to Shop
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-600 mb-4">Product Not Found</h1>
+          <p className="text-gray-500 mb-4">The product you're looking for doesn't exist.</p>
+          <Link 
+            href="/shop" 
+            className="inline-block px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+          >
+            Back to Shop
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto px-4 py-8">
+        {/* Breadcrumb */}
+        <nav className="mb-8">
+          <ol className="flex items-center space-x-2 text-sm text-gray-500">
+            <li><Link href="/" className="hover:text-gray-700">Home</Link></li>
+            <li>›</li>
+            <li><Link href="/shop" className="hover:text-gray-700">Shop</Link></li>
+            <li>›</li>
+            <li className="text-gray-900">{product.name}</li>
+          </ol>
+        </nav>
+
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Product Images */}
+          <div className="space-y-4">
+            <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
+              <Image
+                src={product.images[currentImageIndex] || "/assets/img/placeholder.svg"}
+                alt={product.name}
+                width={600}
+                height={600}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
+            {product.images.length > 1 && (
+              <div className="flex space-x-2 overflow-x-auto">
+                {product.images.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 ${
+                      index === currentImageIndex ? 'border-ochre' : 'border-gray-200'
+                    }`}
+                  >
+                    <Image
+                      src={image}
+                      alt={`${product.name} ${index + 1}`}
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Product Details */}
+          <div className="space-y-6">
+            <div>
+              <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">{product.name}</h1>
+              <p className="text-lg text-gray-600">{product.description}</p>
+              {product.additionalInfo && (
+                <p className="text-sm text-gray-500 mt-2">{product.additionalInfo}</p>
+              )}
+            </div>
+
+            {/* Price and Badges */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3">
+                <span className="text-2xl lg:text-3xl font-bold text-gray-900">
+                  {formatCurrency(product.priceInCents / 100)}
+                </span>
+                {product.oldPriceInCents && product.oldPriceInCents > 0 && (
+                  <span className="text-xl text-gray-500 line-through">
+                    {formatCurrency(product.oldPriceInCents / 100)}
+                  </span>
+                )}
+              </div>
+              {product.discountPercentage && (
+                <span className="px-3 py-1 bg-red-100 text-red-800 text-sm font-medium rounded-full">
+                  -{product.discountPercentage}% OFF
+                </span>
+              )}
+              {product.isNew && (
+                <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
+                  New
+                </span>
+              )}
+            </div>
+
+            {/* Product Meta */}
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <span className="font-medium text-gray-700">SKU:</span>
+                <span className="ml-2 text-gray-600">{product.sku}</span>
+              </div>
+              <div>
+                <span className="font-medium text-gray-700">Category:</span>
+                <span className="ml-2 text-gray-600">{product.category || 'Furniture'}</span>
+              </div>
+              <div>
+                <span className="font-medium text-gray-700">Availability:</span>
+                <span className={`ml-2 ${product.inventory > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                  {product.inventory > 0 ? `In Stock (${product.inventory})` : 'Out of Stock'}
+                </span>
+              </div>
+              {product.weight && (
+                <div>
+                  <span className="font-medium text-gray-700">Weight:</span>
+                  <span className="ml-2 text-gray-600">{product.weight} kg</span>
+                </div>
+              )}
+            </div>
+
+            {/* Dimensions */}
+            {product.dimensions && (
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h3 className="font-medium text-gray-700 mb-2">Dimensions</h3>
+                <div className="grid grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <span className="text-gray-500">Length:</span>
+                    <span className="ml-1 font-medium">{product.dimensions.length} cm</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-500">Width:</span>
+                    <span className="ml-1 font-medium">{product.dimensions.width} cm</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-500">Height:</span>
+                    <span className="ml-1 font-medium">{product.dimensions.height} cm</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Tags */}
+            {product.tag && product.tag.length > 0 && (
+              <div>
+                <h3 className="font-medium text-gray-700 mb-2">Tags</h3>
+                <div className="flex flex-wrap gap-2">
+                  {product.tag.map((tag, index) => (
+                    <span key={index} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Quantity and Actions */}
+            <div className="space-y-4">
+              <div className="flex items-center space-x-4">
+                <label className="font-medium text-gray-700">Quantity:</label>
+                <div className="flex items-center border border-gray-300 rounded">
+                  <button
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="px-3 py-2 hover:bg-gray-100 transition-colors"
+                    disabled={quantity <= 1}
+                  >
+                    -
+                  </button>
+                  <span className="px-4 py-2 border-x border-gray-300">{quantity}</span>
+                  <button
+                    onClick={() => setQuantity(Math.min(product.inventory, quantity + 1))}
+                    className="px-3 py-2 hover:bg-gray-100 transition-colors"
+                    disabled={quantity >= product.inventory}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex space-x-4">
+                <button
+                  onClick={handleAddToCart}
+                  disabled={!product.isAvailableForPurchase || product.inventory === 0}
+                  className="flex-1 bg-ochre text-white py-3 px-6 rounded hover:bg-opacity-90 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed font-medium"
+                >
+                  {product.inventory === 0 ? 'Out of Stock' : 'Add to Cart'}
+                </button>
+                <button
+                  onClick={handleWishlistToggle}
+                  className={`px-4 py-3 border border-gray-300 rounded hover:border-gray-400 transition-colors ${
+                    isInWishlist({ product }) ? 'bg-red-50 border-red-300' : ''
+                  }`}
+                >
+                  {isInWishlist({ product }) ? '❤️' : '🤍'}
+                </button>
+                <button
+                  onClick={handleShare}
+                  className="px-4 py-3 border border-gray-300 rounded hover:border-gray-400 transition-colors"
+                >
+                  📤
+                </button>
+              </div>
+            </div>
+
+            {/* Back to Shop */}
+            <div className="pt-6">
+              <Link 
+                href="/shop"
+                className="inline-flex items-center text-ochre hover:text-ochre-dark transition-colors"
+              >
+                ← Back to Shop
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductDetailPage;

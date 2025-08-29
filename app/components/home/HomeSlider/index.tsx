@@ -111,7 +111,7 @@ const HomeSlider: React.FC = () => {
                         <div key={slide.id} className="relative">
                             <Image loading="lazy" className={`transition-transform object-cover duration-300 ease-in-out`} src={slide.image} alt="slide" />
                             <div className={`slide-about absolute flex bottom-20 items-end left-6`}>
-                                <div className="bg-[#FFFFFFB8] z-10 gap-2 p-4 flex flex-col backdrop-blur-sm">
+                                <div className="bg-[#FFFFFFB8] z-10 gap-2 p-4 flex flex-col backdrop-blur-xs">
                                     <span className="text-[#616161] font-medium">{slide.id} - {slide.title}</span>
                                     <span className="text-[#3A3A3A] font-semibold text-3xl">{slide.category}</span>
                                 </div>

@@ -1,7 +1,7 @@
 import { ProductType } from "@/app/interfaces";
-import Product1 from "@/public/assets/img/products/product1.png"
-import Product2 from "@/public/assets/img/products/product2.png"
-import Product3 from "@/public/assets/img/products/product3.png"
+import Product1 from "@/public/assets/img/products/product1.png";
+import Product2 from "@/public/assets/img/products/product2.png";
+import Product3 from "@/public/assets/img/products/product3.png";
 
 const products: ProductType[] = [
     {
@@ -54,8 +54,7 @@ const products: ProductType[] = [
         price: 2000,
         image: Product3,
         isnew: true
-    },
-
+    }
 ];
 
 export default products;

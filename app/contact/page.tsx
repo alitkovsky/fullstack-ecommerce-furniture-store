@@ -1,11 +1,11 @@
-import Adress from '@/public/assets/icons/contact/adress.svg'
-import Phone from '@/public/assets/icons/contact/phone.svg'
-import Clock from '@/public/assets/icons/contact/clock.svg'
-
-import { PageHeading } from '@/app/components'
-import UpperFooter from '@/app/components/upperfooter'
-
 import Image from "next/image";
+
+import Adress from "@/public/assets/icons/contact/adress.svg";
+import Phone from "@/public/assets/icons/contact/phone.svg";
+import Clock from "@/public/assets/icons/contact/clock.svg";
+
+import PageHeading from "@/app/components/PageHeading";
+import UpperFooter from "@/app/components/upperfooter";
 
 const ContactPage: React.FC = () => {
     return (
@@ -45,19 +45,19 @@ const ContactPage: React.FC = () => {
                     <form className="lg:px-12 w-full lg:w-3/5 flex flex-col gap-6" action="">
                         <div className="flex flex-col gap-4">
                             <label className="font-medium" htmlFor="name">Your name</label>
-                            <input className="border focus:outline-none px-8 py-4 rounded-xl border-[#9F9F9F]" id="name" placeholder="Abc" type="text" />
+                            <input className="border focus:outline-hidden px-8 py-4 rounded-xl border-[#9F9F9F]" id="name" placeholder="Abc" type="text" />
                         </div>
                         <div className="flex flex-col gap-4">
                             <label className="font-medium" htmlFor="email">Email address</label>
-                            <input className="border focus:outline-none px-8 py-4 rounded-xl border-[#9F9F9F]" id="email" placeholder="Abc@def.com" type="email" />
+                            <input className="border focus:outline-hidden px-8 py-4 rounded-xl border-[#9F9F9F]" id="email" placeholder="Abc@def.com" type="email" />
                         </div>
                         <div className="flex flex-col gap-4">
                             <label className="font-medium" htmlFor="subject">Subject</label>
-                            <input className="border focus:outline-none px-8 py-4 rounded-xl border-[#9F9F9F]" id="subject" placeholder="This is an optional" type="text" />
+                            <input className="border focus:outline-hidden px-8 py-4 rounded-xl border-[#9F9F9F]" id="subject" placeholder="This is an optional" type="text" />
                         </div>
                         <div className="flex flex-col gap-4">
                             <label className="font-medium" htmlFor="message">Your name</label>
-                            <textarea placeholder="Hi! i’d like to ask about" className="resize-none focus:outline-none border px-8 py-4 rounded-xl border-[#9F9F9F] h-32" id="message"></textarea>
+                            <textarea placeholder="Hi! i’d like to ask about" className="resize-none focus:outline-hidden border px-8 py-4 rounded-xl border-[#9F9F9F] h-32" id="message"></textarea>
                         </div>
                         <button className="text-white w-fit rounded bg-ochre border border-ochre hover:bg-white hover:text-ochre duration-300 px-16 py-3 mt-6">Submit</button>
                     </form>
@@ -66,6 +66,6 @@ const ContactPage: React.FC = () => {
             <UpperFooter />
         </>
     )
-}
+};
 
-export default ContactPage
+export default ContactPage;

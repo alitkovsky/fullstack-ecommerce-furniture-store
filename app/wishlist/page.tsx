@@ -1,9 +1,7 @@
 "use client";
 
-import {
-    PageHeading,
-    WishlistItemCard
-} from "@/app/components";
+import PageHeading from "@/app/components/PageHeading";
+import WishlistItemCard from "@/app/components/wishlist/WishListItemCard";
 import { useData } from "@/app/context/AppContext";
 
 const WishlistPage: React.FC = () => {
@@ -21,6 +19,6 @@ const WishlistPage: React.FC = () => {
             </div>
         </>
     )
-}
+};
 
-export default WishlistPage
+export default WishlistPage;

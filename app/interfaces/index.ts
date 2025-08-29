@@ -20,9 +20,38 @@ export interface ProductType {
     isnew: boolean
 } // productcard.tsx ; shoppage.tsx ; productpage.tsx ; ourproducts.tsx
 
+// New database product interface
+export interface DatabaseProduct {
+    id: string;
+    name: string;
+    description: string;
+    additionalInfo?: string;
+    priceInCents: number;
+    oldPriceInCents?: number;
+    discountPercentage?: number;
+    images: string[];
+    imagePath: string;
+    isNew: boolean;
+    isAvailableForPurchase: boolean;
+    inventory: number;
+    category: string;
+    collectionIDs: string[];
+    tag: string[];
+    sku: string;
+    weight?: number;
+    dimensions?: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
 export interface ProductCardProps {
     product: ProductType;
 } // productcard.tsx
+
+// New database product card props
+export interface DatabaseProductCardProps {
+    product: DatabaseProduct;
+}
 
 export interface NavMenuItemType {
     item: string;
@@ -38,7 +67,8 @@ export interface CartPageItemProps {
 }
 
 export interface ProductFeaturesComponentProps {
-    isPage: boolean
+    // product: any;
+    isPage: boolean;
 }
 
 export interface AppContextType {
@@ -66,7 +96,7 @@ export interface AppContextType {
 } // appcontext.tsx
 
 // export interface HandleToggleCartModal {
-//     (toggle: boolean, product: ProductType): ProductType;
+//     (toggle: boolean, product: ProductType ): ProductType;
 // };
 
 export interface WishlistItemType {
@@ -105,4 +135,12 @@ export interface ProductFeatures {
     color: string;
     size: string;
     quantity: number;
+}
+
+export interface User {
+    id: string;
+    createdAt: Date;
+    email: string;
+    updatedAt: Date;
+    orders: { productId: string; pricePaidInCents: number }[];
 }

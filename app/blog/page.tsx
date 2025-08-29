@@ -1,13 +1,12 @@
-import {
-    BlogCard,
-    PageHeading,
-    Pagination
-} from '@/app/components'
-import blogImg from '@/public/assets/img/blog/1.jpg'
-import Search from '@/public/assets/icons/search.svg'
-import UpperFooter from '@/app/components/upperfooter'
-
 import Image from "next/image";
+
+import BlogCard from "@/app/components/blog/BlogCard";
+import PageHeading from "@/app/components/PageHeading";
+import Pagination from "@/app/components/Pagination";
+import UpperFooter from "@/app/components/upperfooter";
+
+import blogImg from "@/public/assets/img/blog/1.jpg";
+import Search from "@/public/assets/icons/search.svg";
 
 const BlogPage: React.FC = () => {
     return (
@@ -22,9 +21,9 @@ const BlogPage: React.FC = () => {
                 </div>
                 <div className="w-full order-first lg:order-last lg:sticky top-8 self-start lg:w-3/12">
                     <div className="relative mb-6">
-                        {/* <BsSearch className='absolute right-3 top-4 text-xl' /> */}
-                        <Image className='absolute right-3 top-3' src={Search} alt="search" />
-                        <input className="border border-[#9F9F9F] rounded-lg w-full focus:outline-none p-3" type="text" />
+                        {/* <BsSearch className="absolute right-3 top-4 text-xl" /> */}
+                        <Image className="absolute right-3 top-3" src={Search} alt="search" />
+                        <input className="border border-[#9F9F9F] rounded-lg w-full focus:outline-hidden p-3" type="text" />
                     </div>
                     <div className="flex flex-col gap-20">
                         <div className="px-8">
@@ -76,6 +75,6 @@ const BlogPage: React.FC = () => {
             <UpperFooter />
         </>
     )
-}
+};
 
-export default BlogPage
+export default BlogPage;

@@ -1,5 +1,3 @@
-'use client';
-
 import { useEffect, useState } from "react";
 import { useData } from "@/app/context/AppContext";
 import { ProductFeaturesComponentProps } from "@/app/interfaces";
@@ -15,49 +13,38 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
         setProductFeatures,
         productFeatures,
         initialFeatures
-    } = useData();
+    } = useData()
 
-    const [quantity, setQuantity] = useState<number>(1);
+    const [quantity, setQuantity] = useState<number>(1)
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
     const handleFeatures = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.currentTarget
-        setProductFeatures((prevFeatures) => ({
-            ...prevFeatures,
-            [isPage ? name.replace("_page", "") : name]: value,
-        }));
+        setProductFeatures({
+            ...productFeatures,
+            [isPage ? name.replace('_page', '') : name]: [value][0]
+        })
     }
 
     useEffect(() => {
-        setProductFeatures((prevFeatures) => {
-            if (prevFeatures.quantity !== quantity) {
-                return { ...prevFeatures, quantity };
-            }
-            return prevFeatures;
-        });
-    }, [quantity, setProductFeatures]);
+        setProductFeatures({
+            ...productFeatures,
+            quantity: quantity,
+        })
+    }, [quantity])
 
-    // Initialize productFeatures and quantity when initialFeatures or toggleCartModal changes
-    useEffect(() => {
-        if (JSON.stringify(productFeatures) !== JSON.stringify(initialFeatures)) {
-            setProductFeatures(initialFeatures);
-        }
-        setQuantity(1); // Reset quantity only if initialFeatures change
-    }, [initialFeatures, setProductFeatures, toggleCartModal, productFeatures]);
-
-    const plusCount = () => setQuantity((prev) => prev + 1);
+    const plusCount = () => {
+        setQuantity(prev => prev + 1)
+    }
     const minusCount = () => {
-        if (quantity > 1) setQuantity((prev) => prev - 1);
-    };
+        if (quantity > 1)
+            setQuantity(prev => prev - 1)
+    }
 
     const handleAddToCart = () => {
 
         if (productForModal && productFeatures) {
-            addToCart({ cartProduct: {
-                id: cartItems.length,
-                product: productForModal,
-                features: productFeatures
-            } })
+            addToCart({ cartProduct: { id: cartItems.length, product: productForModal, features: productFeatures } })
         }
         setProductFeatures(initialFeatures)
         setQuantity(1)
@@ -66,7 +53,12 @@ const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isP
         setTimeout(() => {
             setIsDisabled(false);
         }, 3000);
-    };
+    }
+
+    useEffect(() => {
+        setProductFeatures(initialFeatures)
+        setQuantity(1)
+    }, [toggleCartModal])
 
     return (
         <div className="flex flex-col gap-6">

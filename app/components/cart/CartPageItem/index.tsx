@@ -1,6 +1,6 @@
-import Trash from '@/public/assets/icons/trash.svg'
-import { CartPageItemProps } from '@/app/interfaces'
-import { useData } from '@/app/context/AppContext'
+import Trash from "@/public/assets/icons/trash.svg";
+import { CartPageItemProps } from "@/app/interfaces";
+import { useData } from "@/app/context/AppContext";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -13,7 +13,7 @@ const CartPageItem: React.FC<CartPageItemProps> = ({ cartItem }) => {
         <div className="grid min-w-[750px] w-full grid-cols-8">
             <div className="">
                 <div className="bg-[#F9F1E7] overflow-hidden max-w-32 h-32 flex items-center rounded-xl">
-                    <Image loading="lazy" className='w-full h-full object-cover' src={cartItem?.product?.image} alt={cartItem?.product?.title + "_img"} />
+                    <Image loading="lazy" className="w-full h-full object-cover" src={cartItem?.product?.image} alt={cartItem?.product?.title + "_img"} />
                 </div>
             </div>
             <div className="text-[#9F9F9F] flex items-center justify-center">
@@ -23,7 +23,7 @@ const CartPageItem: React.FC<CartPageItemProps> = ({ cartItem }) => {
                 <p>{cartItem?.features?.size}</p>
             </div>
             <div className="text-[#9F9F9F] gap-1 flex items-center justify-center">
-                <span className={`${cartItem?.features?.color === 'ochre' ? 'bg-ochre' : cartItem?.features?.color === 'black' ? 'bg-black' : 'bg-[#816DFA]'} w-6 h-6 rounded-full`}></span>
+                <span className={`${cartItem?.features?.color === "ochre" ? "bg-ochre" : cartItem?.features?.color === "black" ? "bg-black" : "bg-[#816DFA]"} w-6 h-6 rounded-full`}></span>
                 <p>{cartItem?.features?.color}</p>
             </div>
             <div className="text-[#9F9F9F] flex items-center justify-center">
@@ -42,6 +42,6 @@ const CartPageItem: React.FC<CartPageItemProps> = ({ cartItem }) => {
             </div>
         </div>
     )
-}
+};
 
-export default CartPageItem
+export default CartPageItem;

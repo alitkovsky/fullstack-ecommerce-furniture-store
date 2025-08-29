@@ -20,11 +20,11 @@ const FilterBar: React.FC = () => {
             <div className="flex gap-2 md:gap-0 flex-col md:flex-row">
                 <div className="flex items-center flex-row justify-between sm:justify-start">
                     <label htmlFor="show" className="mr-4">Show</label>
-                    <input id="show" className="w-10 h-10 p-1 sm:mr-6 focus:outline-none" placeholder="16" type="number" />
+                    <input id="show" className="w-10 h-10 p-1 sm:mr-6 focus:outline-hidden" placeholder="16" type="number" />
                 </div>
                 <div className="flex flex-row items-center justify-between sm:justify-start">
-                    <label htmlFor="shortby" className="mr-4">Short by</label>
-                    <select id="shortby" className="p-3 w-44 focus:outline-none appearance-none" defaultValue="default">
+                    <label htmlFor="shortby" className="mr-4">Sort by</label>
+                    <select id="shortby" className="p-3 w-44 focus:outline-hidden appearance-none" defaultValue="default">
                         <option value="default">Default</option>
                         <option value="second">Second</option>
                         <option value="third">Third</option>
