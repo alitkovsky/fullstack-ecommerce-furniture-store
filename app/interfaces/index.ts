@@ -10,13 +10,13 @@ export interface LoginProps {
 } //login.tsx
 
 export interface ProductType {
-    id: number,
+    id: number | string,
     title: string,
     about: string,
     oldprice?: number,
     price: number,
     discount?: number,
-    image: StaticImageData,
+    image: StaticImageData | string,
     isnew: boolean
 } // productcard.tsx ; shoppage.tsx ; productpage.tsx ; ourproducts.tsx
 
@@ -39,7 +39,11 @@ export interface DatabaseProduct {
     tag: string[];
     sku: string;
     weight?: number;
-    dimensions?: string;
+    dimensions?: string | {
+        length: number;
+        width: number;
+        height: number;
+    };
     createdAt: string;
     updatedAt: string;
 }

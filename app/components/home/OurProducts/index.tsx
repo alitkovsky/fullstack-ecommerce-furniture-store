@@ -4,9 +4,10 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import ProductCard from "@/app/components/ProductCard/new";
+import { DatabaseProduct } from "@/app/interfaces";
 
 const OurProducts: React.FC = () => {
-    const [products, setProducts] = useState<any[]>([]);
+    const [products, setProducts] = useState<DatabaseProduct[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();

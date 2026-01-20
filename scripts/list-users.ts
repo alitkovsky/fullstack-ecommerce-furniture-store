@@ -8,7 +8,12 @@ import { prisma } from "../lib/prisma";
 
 async function listUsers() {
   try {
-    const users = await prisma.user.findMany({
+    const users: {
+      id: string;
+      email: string | null;
+      role: string;
+      createdAt: Date;
+    }[] = await prisma.user.findMany({
       select: {
         id: true,
         email: true,

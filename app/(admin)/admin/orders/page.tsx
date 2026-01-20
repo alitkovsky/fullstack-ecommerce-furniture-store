@@ -19,9 +19,22 @@ import {
  import { DeleteDropDownItem } from "./_components/OrderActions";
 import React from "react";
 
+type OrderRow = {
+  id: string;
+  totalPrice: number;
+  userId: string;
+  items: {
+    quantity: number;
+    price: number;
+    product: { name: string };
+  }[];
+  createdAt: Date;
+  user: { id: string; email: string } | null;
+};
+
 async function getOrders() {
   // First get all orders with basic data
-  const orders = await prisma.order.findMany({
+  const orders: Omit<OrderRow, "user">[] = await prisma.order.findMany({
     select: {
       id: true,
       totalPrice: true,
@@ -40,7 +53,7 @@ async function getOrders() {
 
   // Then get user data separately to handle orphaned orders
   const userIds = [...new Set(orders.map(order => order.userId))]
-  const users = await prisma.user.findMany({
+  const users: { id: string; email: string | null }[] = await prisma.user.findMany({
     where: { id: { in: userIds } },
     select: { id: true, email: true }
   })

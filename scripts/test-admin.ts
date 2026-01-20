@@ -57,7 +57,14 @@ async function testAdminFunctionality() {
     // Test 3: Test products table query
     console.log('3️⃣ Testing Products Table Query...');
     try {
-      const products = await prisma.product.findMany({
+      const products: {
+        id: string;
+        name: string;
+        collectionIDs: string[] | null;
+        priceInCents: number;
+        isAvailableForPurchase: boolean;
+        _count: { orderItems: number };
+      }[] = await prisma.product.findMany({
         select: {
           id: true,
           name: true,

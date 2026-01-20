@@ -68,10 +68,10 @@ async function setupCleanDemo() {
         name: 'Bookshelf',
         priceInCents: 34999,
         description: '5-tier wooden bookshelf with modern design',
-        imagePath: 'https://images.unsplash.com/photo-1594736797933-d0bc0c7137b7?w=500&h=400&fit=crop',
+        imagePath: 'https://images.unsplash.com/photo-1549497538-303791108f95?w=500&h=400&fit=crop',
         isAvailableForPurchase: true,
         sku: 'SHELF-001',
-        images: ['https://images.unsplash.com/photo-1594736797933-d0bc0c7137b7?w=500&h=400&fit=crop'],
+        images: ['https://images.unsplash.com/photo-1549497538-303791108f95?w=500&h=400&fit=crop'],
         inventory: 8,
         tag: ['furniture', 'storage', 'bookshelf'],
         category: 'Storage',
@@ -198,7 +198,7 @@ async function setupCleanDemo() {
   console.log('🛍️ Creating sample orders for customer@demo.com...')
 
   // Create several orders for the demo customer
-  const orders = await Promise.all([
+  const orders: { totalPrice: number }[] = await Promise.all([
     // Order 1: Sofa + Coffee Table = $1099.98
     prisma.order.create({
       data: {

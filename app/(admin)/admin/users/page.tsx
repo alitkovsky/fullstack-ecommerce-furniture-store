@@ -40,8 +40,13 @@ import React from "react";
         )
  }
 
- async function UsersTable() {
-   const users = await getUsers()
+async function UsersTable() {
+   const users: {
+     id: string;
+     email: string | null;
+     orders: { totalPrice: number }[];
+     createdAt: Date;
+   }[] = await getUsers()
 
    if (users.length === 0) return <p className="p-8 lg:p-20 text-center text-2xl font-normal">No customers found</p>
 

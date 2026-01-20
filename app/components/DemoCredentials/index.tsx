@@ -136,7 +136,7 @@ export default function DemoCredentials() {
           
           <div className="bg-green-50 border border-green-200 rounded-lg p-3">
             <p className="text-xs text-green-800">
-              <strong>Quick Start:</strong> Click "Sign In" and use these email addresses. 
+              <strong>Quick Start:</strong> Click &quot;Sign In&quot; and use these email addresses.
               Passwords are already set up in the authentication system.
             </p>
           </div>

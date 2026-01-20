@@ -1,13 +1,31 @@
 import { Prisma, PrismaClient } from "@prisma/client";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const prisma = new PrismaClient();
 
-export default async function handler(req: { method: string; body: { products: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error?: string; message?: string; result?: Prisma.BatchPayload; }): any; new(): any; }; }; }) {
+interface ProductInput {
+  name: string;
+  description: string;
+  additionalInfo?: string;
+  priceInCents: number;
+  oldPriceInCents?: number;
+  discountPercentage?: number;
+  images: string[];
+  isNew?: boolean;
+  sku: string;
+  tag: string[];
+}
+
+interface RequestBody {
+  products: ProductInput[];
+}
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { products } = req.body;
+  const { products } = req.body as RequestBody;
 
   if (!products || !Array.isArray(products)) {
     return res.status(400).json({ error: "Invalid product data" });

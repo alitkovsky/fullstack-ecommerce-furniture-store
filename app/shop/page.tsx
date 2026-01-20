@@ -7,9 +7,10 @@ import Pagination from "@/app/components/Pagination";
 import ProductCard from "@/app/components/ProductCard/new";
 import PageHeading from "@/app/components/PageHeading";
 import UpperFooter from "@/app/components/upperfooter";
+import { DatabaseProduct } from "@/app/interfaces";
 
 const ShopPage: React.FC = () => {
-    const [products, setProducts] = useState<any[]>([]);
+    const [products, setProducts] = useState<DatabaseProduct[]>([]);
 
     useEffect(() => {
         const fetchProducts = async () => {

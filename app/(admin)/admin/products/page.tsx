@@ -41,7 +41,14 @@ export default function AdminProductsPage() {
 };
 
 async function ProductsTable() {
-  const products = await prisma.product.findMany({
+  const products: {
+    id: string;
+    name: string;
+    collectionIDs: string[] | null;
+    priceInCents: number;
+    isAvailableForPurchase: boolean;
+    _count: { orderItems: number };
+  }[] = await prisma.product.findMany({
     select: {
       id: true,
       name: true,

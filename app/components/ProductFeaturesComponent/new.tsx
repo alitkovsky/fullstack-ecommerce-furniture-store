@@ -5,7 +5,7 @@ import { useData } from "@/app/context/AppContext";
 import { ProductFeaturesComponentProps } from "@/app/interfaces";
 
 
-const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ product, isPage }) => {
+const ProductFeaturesComponent: React.FC<ProductFeaturesComponentProps> = ({ isPage }) => {
     const {
         toggleCartModal,
         setToggleCartModal,

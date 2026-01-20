@@ -29,9 +29,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     const [productForModal, setProductForModal] = useState<ProductType | undefined>();
     const [productFeatures, setProductFeatures] = useState<ProductFeatures>(initialFeatures);
 
-    const debounce = (func: Function, delay: number) => {
+    const debounce = <T extends unknown[]>(func: (...args: T) => void, delay: number) => {
         let timeout: NodeJS.Timeout;
-        return (...args: any[]) => {
+        return (...args: T) => {
             clearTimeout(timeout);
             timeout = setTimeout(() => func(...args), delay);
         };

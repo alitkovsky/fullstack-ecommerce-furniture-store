@@ -193,7 +193,12 @@ async function addMoreProducts() {
     console.log(`📊 Total products in database: ${totalCount}`);
 
     // Show some sample products
-    const recentProducts = await prisma.product.findMany({
+    const recentProducts: {
+      name: string;
+      priceInCents: number;
+      sku: string;
+      category: string | null;
+    }[] = await prisma.product.findMany({
       take: 3,
       orderBy: { createdAt: 'desc' },
       select: {

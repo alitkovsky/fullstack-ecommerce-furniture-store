@@ -23,7 +23,7 @@ const addSchema = z.object({
 export async function addProduct(prevState: unknown, formData: FormData) {
   const result = addSchema.safeParse(Object.fromEntries(formData.entries()))
   if (result.success === false) {
-    return result.error.formErrors.fieldErrors
+    return result.error.flatten().fieldErrors
   }
 
   const data = result.data
@@ -48,6 +48,9 @@ export async function addProduct(prevState: unknown, formData: FormData) {
       priceInCents: data.priceInCents,
       filePath,
       imagePath,
+      sku: `SKU-${crypto.randomUUID()}`,
+      tag: [],
+      images: [imagePath],
     },
   })
 
@@ -69,7 +72,7 @@ export async function updateProduct(
 ) {
   const result = editSchema.safeParse(Object.fromEntries(formData.entries()))
   if (result.success === false) {
-    return result.error.formErrors.fieldErrors
+    return result.error.flatten().fieldErrors
   }
 
   const data = result.data
@@ -79,14 +82,14 @@ export async function updateProduct(
 
   let filePath = product.filePath
   if (data.file != null && data.file.size > 0) {
-    await fs.unlink(product.filePath)
+    if (product.filePath) await fs.unlink(product.filePath)
     filePath = `products/${crypto.randomUUID()}-${data.file.name}`
     await fs.writeFile(filePath, Buffer.from(await data.file.arrayBuffer()))
   }
 
   let imagePath = product.imagePath
   if (data.image != null && data.image.size > 0) {
-    await fs.unlink(`public${product.imagePath}`)
+    if (product.imagePath) await fs.unlink(`public${product.imagePath}`)
     imagePath = `/products/${crypto.randomUUID()}-${data.image.name}`
     await fs.writeFile(
       `public${imagePath}`,
@@ -127,8 +130,8 @@ export async function deleteProduct(id: string) {
 
   if (product == null) return notFound()
 
-  await fs.unlink(product.filePath)
-  await fs.unlink(`public${product.imagePath}`)
+  if (product.filePath) await fs.unlink(product.filePath)
+  if (product.imagePath) await fs.unlink(`public${product.imagePath}`)
 
   revalidatePath("/")
   revalidatePath("/products")

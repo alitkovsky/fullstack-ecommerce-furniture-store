@@ -7,12 +7,13 @@ import { useData } from "@/app/context/AppContext";
 
 import Heart from "@/public/assets/icons/producthover/heart.svg";
 import Share from "@/public/assets/icons/producthover/share.svg";
-import { ProductCardProps } from "@/app/interfaces";
+import { DatabaseProduct } from "@/app/interfaces";
 import { formatCurrency } from "@/lib/formatters";
+import { toProductType } from "@/app/lib/product-mappers";
 
 // Enhanced ProductCard for database-driven products with proper price formatting
 
-const ProductCard: React.FC<{ product: any }> = ({ product }) => {
+const ProductCard: React.FC<{ product: DatabaseProduct }> = ({ product }) => {
     const {
         addToWishlist,
         isInWishlist,
@@ -20,6 +21,8 @@ const ProductCard: React.FC<{ product: any }> = ({ product }) => {
         setToggleCartModal,
         setProductForModal
     } = useData();
+
+    const productForActions = toProductType(product);
 
     const [isOverlayShown, setIsOverlayShown] = useState<boolean>(false);
 
@@ -29,16 +32,16 @@ const ProductCard: React.FC<{ product: any }> = ({ product }) => {
         event.preventDefault();
         event.stopPropagation();
         setToggleCartModal(true);
-        setProductForModal(product);
+        setProductForModal(productForActions);
     };
 
     const handleAddToWishlist = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         event.stopPropagation();
-        if (!isInWishlist({ product })) {
-            addToWishlist({ product });
+        if (!isInWishlist({ product: productForActions })) {
+            addToWishlist({ product: productForActions });
         } else {
-            removeFromWishlist({ product });
+            removeFromWishlist({ product: productForActions });
         }
     };
 
@@ -141,13 +144,13 @@ const ProductCard: React.FC<{ product: any }> = ({ product }) => {
                                 onClick={(event) => handleAddToWishlist(event)}
                                 className="flex items-center gap-1"
                             >
-                                {isInWishlist({ product }) ? (
+                                {isInWishlist({ product: productForActions }) ? (
                                     <Image loading="lazy" src={Heart} alt="share" />
                                 ) : (
                                     "❤"
                                 )}
                                 <span>
-                                    {isInWishlist({ product }) ? "Unlike" : "Like"}
+                                    {isInWishlist({ product: productForActions }) ? "Unlike" : "Like"}
                                 </span>
                             </button>
                             </div>

@@ -91,8 +91,8 @@ export async function addProductEnhanced(prevState: unknown, formData: FormData)
     });
 
     if (result.success === false) {
-      console.log('Validation errors:', result.error.formErrors.fieldErrors);
-      return result.error.formErrors.fieldErrors;
+      console.log('Validation errors:', result.error.flatten().fieldErrors);
+      return result.error.flatten().fieldErrors;
     }
 
     const data = result.data;
@@ -191,7 +191,7 @@ export async function updateProductEnhanced(
     });
 
     if (result.success === false) {
-      return result.error.formErrors.fieldErrors;
+      return result.error.flatten().fieldErrors;
     }
 
     const data = result.data;
@@ -323,7 +323,7 @@ export async function toggleMultipleProducts(ids: string[], isAvailable: boolean
 export async function deleteMultipleProducts(ids: string[]) {
   try {
     // Check if any products have orders
-    const productsWithOrders = await db.product.findMany({
+    const productsWithOrders: { id: string; name: string }[] = await db.product.findMany({
       where: { 
         id: { in: ids },
         orderItems: { some: {} }
@@ -377,7 +377,6 @@ export async function seedProductsFromStatic() {
 
     await db.product.createMany({
       data: productsData,
-      skipDuplicates: true,
     });
 
     console.log(`Seeded ${productsData.length} products from static data`);

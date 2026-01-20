@@ -19,11 +19,6 @@ export function CollectionForm({ collection }: { collection?: Collection | null 
 
   return (
     <form action={action} className="space-y-8 p-8 lg:p-20">
-      {error._form && (
-        <div className="text-destructive bg-red-50 p-4 rounded-md">
-          {error._form}
-        </div>
-      )}
       
       <div className="space-y-2">
         <Label htmlFor="name">Name</Label>
@@ -34,7 +29,7 @@ export function CollectionForm({ collection }: { collection?: Collection | null 
           required
           defaultValue={collection?.name || ""}
         />
-        {error.name && <div className="text-destructive text-sm">{error.name}</div>}
+        {'name' in error && error.name && <div className="text-destructive text-sm">{error.name}</div>}
       </div>
       <div className="space-y-2">
         <Label htmlFor="description">Description</Label>
@@ -44,7 +39,7 @@ export function CollectionForm({ collection }: { collection?: Collection | null 
           required
           defaultValue={collection?.description}
         />
-        {error.description && (
+        {'description' in error && error.description && (
           <div className="text-destructive text-sm">{error.description}</div>
         )}
       </div>
@@ -60,7 +55,7 @@ export function CollectionForm({ collection }: { collection?: Collection | null 
             className="rounded-md"
           />
         )}
-        {error.image && <div className="text-destructive text-sm">{error.image}</div>}
+        {'image' in error && error.image && <div className="text-destructive text-sm">{error.image}</div>}
       </div>
       <SubmitButton />
     </form>

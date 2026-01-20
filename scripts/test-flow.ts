@@ -51,7 +51,15 @@ async function testCompleteFlow() {
 
     // Test 3: Data Integrity
     console.log('3️⃣ Testing Data Integrity...');
-    const products = await prisma.product.findMany({
+    const products: {
+      id: string;
+      name: string;
+      priceInCents: number;
+      images: string[];
+      sku: string;
+      isAvailableForPurchase: boolean;
+      inventory: number;
+    }[] = await prisma.product.findMany({
       select: {
         id: true,
         name: true,
@@ -82,16 +90,18 @@ async function testCompleteFlow() {
 
     // Test 4: Product Categories
     console.log('4️⃣ Testing Categories...');
-    const categories = await prisma.product.groupBy({
-      by: ['category'],
-      _count: {
-        id: true
-      }
+    const categoryRows: { category: string | null }[] = await prisma.product.findMany({
+      select: { category: true }
     });
-    
+    const categoryCounts = categoryRows.reduce<Record<string, number>>((acc, row) => {
+      const key = row.category ?? 'Uncategorized';
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
+
     console.log('   Categories:');
-    categories.forEach(cat => {
-      console.log(`   📂 ${cat.category}: ${cat._count.id} products`);
+    Object.entries(categoryCounts).forEach(([category, count]) => {
+      console.log(`   📂 ${category}: ${count} products`);
     });
     console.log();
 
@@ -140,7 +150,7 @@ async function testCompleteFlow() {
     // Test 7: Summary
     console.log('📊 Flow Test Summary:');
     console.log(`   Products: ${productCount}`);
-    console.log(`   Categories: ${categories.length}`);
+    console.log(`   Categories: ${Object.keys(categoryCounts).length}`);
     console.log(`   Valid Images: ${validImages}/${validImages + invalidImages}`);
     console.log(`   Price Range: $${(priceStats._min.priceInCents || 0) / 100} - $${(priceStats._max.priceInCents || 0) / 100}`);
     

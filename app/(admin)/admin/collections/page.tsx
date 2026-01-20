@@ -39,7 +39,12 @@ export default function AdminCollectionsPage() {
 };
 
 async function CollectionsTable() {
-  const collections = await prisma.collection.findMany({
+  const collections: {
+    id: string;
+    name: string;
+    description: string | null;
+    _count: { products: number };
+  }[] = await prisma.collection.findMany({
     select: {
       id: true,
       name: true,

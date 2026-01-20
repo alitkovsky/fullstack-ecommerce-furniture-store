@@ -54,7 +54,7 @@ export async function addCollection(prevState: unknown, formData: FormData) {
       image: imageFile,
     })
     if (result.success === false) {
-      return result.error.formErrors.fieldErrors
+      return result.error.flatten().fieldErrors
     }
 
     const data = result.data
@@ -106,7 +106,7 @@ export async function updateCollection(
       image: imageFile.size > 0 ? imageFile : undefined,
     })
     if (result.success === false) {
-      return result.error.formErrors.fieldErrors
+      return result.error.flatten().fieldErrors
     }
 
     const data = result.data

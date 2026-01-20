@@ -20,8 +20,13 @@ import {
 } from "@/components/ui/select";
 import React from "react";
 
+type ActionErrors = {
+  _form?: string[];
+  [key: string]: string[] | undefined;
+};
+
 export function ProductFormEnhanced({ product }: { product?: Product | null }) {
-  const [error, action] = useActionState(
+  const [error, action] = useActionState<ActionErrors, FormData>(
     product == null ? addProductEnhanced : updateProductEnhanced.bind(null, product.id),
     {}
   )

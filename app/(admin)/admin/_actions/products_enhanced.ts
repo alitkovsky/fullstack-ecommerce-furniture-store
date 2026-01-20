@@ -76,7 +76,7 @@ export async function addProductEnhanced(prevState: unknown, formData: FormData)
   });
 
   if (result.success === false) {
-    return result.error.formErrors.fieldErrors;
+    return result.error.flatten().fieldErrors;
   }
 
   const data = result.data;
@@ -152,7 +152,7 @@ export async function updateProductEnhanced(
   });
 
   if (result.success === false) {
-    return result.error.formErrors.fieldErrors;
+    return result.error.flatten().fieldErrors;
   }
 
   const data = result.data;
@@ -222,10 +222,10 @@ export async function toggleMultipleProducts(ids: string[], isAvailable: boolean
 
 export async function deleteMultipleProducts(ids: string[]) {
   // Check if any products have orders
-  const productsWithOrders = await db.product.findMany({
-    where: { 
+  const productsWithOrders: { id: string; name: string }[] = await db.product.findMany({
+    where: {
       id: { in: ids },
-      orders: { some: {} }
+      orderItems: { some: {} }
     },
     select: { id: true, name: true }
   });
@@ -255,7 +255,7 @@ export async function seedProductsFromStatic() {
     priceInCents: product.price * 100, // Convert to cents
     oldPriceInCents: product.oldprice ? product.oldprice * 100 : undefined,
     discountPercentage: product.discount,
-    images: [product.image.src], // This will need manual cloud upload
+    images: [typeof product.image === "string" ? product.image : product.image.src], // This will need manual cloud upload
     isNew: product.isnew,
     isAvailableForPurchase: true,
     inventory: 10, // Default inventory
@@ -267,7 +267,6 @@ export async function seedProductsFromStatic() {
 
   await db.product.createMany({
     data: productsData,
-    skipDuplicates: true,
   });
 
   revalidatePath("/");

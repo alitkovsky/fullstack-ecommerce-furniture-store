@@ -9,6 +9,8 @@ import { useData } from "@/app/context/AppContext";
 import ProductFeaturesComponent from "@/app/components/ProductFeaturesComponent/new";
 import ProductReviews from "@/app/components/ProductReviews";
 import RelatedProducts from "@/app/components/RelatedProducts";
+import { DatabaseProduct } from "@/app/interfaces";
+import { toProductType } from "@/app/lib/product-mappers";
 
 import Arrow from "@/public/assets/icons/arrow-to-right.svg";
 import Stars from "@/public/assets/img/product-single/stars.png";
@@ -18,7 +20,7 @@ import Twitter from "@/public/assets/icons/social-media/twitter.svg";
 
 const ProductPage: React.FC = () => {
     const { id } = useParams();
-    const [product, setProduct] = useState<any | null>(null);
+    const [product, setProduct] = useState<DatabaseProduct | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<number>(1);
 
@@ -46,7 +48,7 @@ const ProductPage: React.FC = () => {
 
     useEffect(() => {
         if (product)
-            setProductForModal(product)
+            setProductForModal(toProductType(product))
     }, [product, setProductForModal])
 
     if (error) {
@@ -97,7 +99,7 @@ const ProductPage: React.FC = () => {
                     </div>
                     <Image
                         className="bg-[#F9F1E7] order-first sm:order-last w-full sm:w-9/12 object-cover rounded-lg sm:rounded-xl h-[50vh] sm:h-[70vh]"
-                        src={product.image[0] || "/assets/img/placeholder.svg"}
+                        src={product.images?.[0] || "/assets/img/placeholder.svg"}
                         alt={product.name + "image"}
                         width={300}
                         height={300}
@@ -130,9 +132,9 @@ const ProductPage: React.FC = () => {
                             <span className="w-20">Tags</span>
                             <span>:</span>
                             <ul className="flex gap-2">
-                            {product.tags.map((tag: string, index: number) => {
+                            {product.tag.map((tag: string, index: number) => (
                                 <li key={index}>{tag}</li>
-                            })}
+                            ))}
                             </ul>
                         </div>
                         <div className="flex gap-3">

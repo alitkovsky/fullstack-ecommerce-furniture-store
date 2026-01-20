@@ -6,7 +6,7 @@ async function syncClerkUsers() {
   console.log('🔄 Syncing Clerk users with database records...')
 
   // Check current users
-  const users = await prisma.user.findMany()
+  const users: { id: string; email: string | null; role: string }[] = await prisma.user.findMany()
   console.log('\nCurrent database users:')
   users.forEach(user => {
     console.log(`- ID: ${user.id}, Email: ${user.email}, Role: ${user.role}`)
@@ -72,11 +72,9 @@ async function promoteUserToAdmin(clerkUserId: string, email: string) {
       })
       
       if (user) {
-        // Update the ID to match Clerk
         user = await prisma.user.update({
           where: { email: email },
           data: { 
-            id: clerkUserId,
             role: 'ADMIN' 
           }
         })

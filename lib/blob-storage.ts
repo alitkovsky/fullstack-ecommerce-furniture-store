@@ -4,7 +4,9 @@
  * This utility handles image uploads and management for Vercel Blob storage
  */
 
-import { put, del, list } from '@vercel/blob';
+import { put, del, list, type ListBlobResult } from '@vercel/blob';
+import fs from 'fs';
+import path from 'path';
 
 export interface UploadResult {
   url: string;
@@ -33,11 +35,13 @@ export async function uploadImageToBlob(
       contentType: contentType || 'image/jpeg',
     });
 
+    const size = Buffer.isBuffer(file) ? file.length : file.size;
+
     return {
       url: blob.url,
       downloadUrl: blob.downloadUrl,
       pathname: blob.pathname,
-      size: blob.size,
+      size,
     };
   } catch (error) {
     console.error('Error uploading to Vercel Blob:', error);
@@ -65,7 +69,7 @@ export async function deleteImageFromBlob(url: string): Promise<void> {
 /**
  * List all files in Vercel Blob storage
  */
-export async function listBlobImages(): Promise<any[]> {
+export async function listBlobImages(): Promise<ListBlobResult['blobs']> {
   try {
     const token = process.env.BLOB_READ_WRITE_TOKEN;
     if (!token) {
@@ -88,9 +92,6 @@ export async function uploadLocalImageToBlob(
   filename: string
 ): Promise<UploadResult> {
   try {
-    const fs = require('fs');
-    const path = require('path');
-    
     if (!fs.existsSync(localPath)) {
       throw new Error(`Local file does not exist: ${localPath}`);
     }

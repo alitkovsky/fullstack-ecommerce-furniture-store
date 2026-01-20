@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
       url: blob.url,
       downloadUrl: blob.downloadUrl,
       filename: uniqueFilename,
-      size: blob.size,
+      size: file.size,
     });
 
   } catch (error) {

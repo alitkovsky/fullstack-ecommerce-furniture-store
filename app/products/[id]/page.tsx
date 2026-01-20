@@ -6,38 +6,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useData } from "@/app/context/AppContext";
 import { formatCurrency } from "@/lib/formatters";
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  additionalInfo?: string;
-  priceInCents: number;
-  oldPriceInCents?: number;
-  discountPercentage?: number;
-  images: string[];
-  imagePath?: string;
-  isNew: boolean;
-  isAvailableForPurchase: boolean;
-  inventory: number;
-  category?: string;
-  collectionIDs: string[];
-  tag: string[];
-  sku: string;
-  weight?: number;
-  dimensions?: {
-    length: number;
-    width: number;
-    height: number;
-  };
-  createdAt: string;
-  updatedAt: string;
-}
+import { DatabaseProduct } from "@/app/interfaces";
+import { toProductType } from "@/app/lib/product-mappers";
 
 const ProductDetailPage: React.FC = () => {
   const params = useParams();
   const router = useRouter();
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<DatabaseProduct | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -50,6 +25,7 @@ const ProductDetailPage: React.FC = () => {
     setToggleCartModal,
     setProductForModal
   } = useData();
+  const productForActions = product ? toProductType(product) : null;
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -87,17 +63,18 @@ const ProductDetailPage: React.FC = () => {
 
   const handleAddToCart = () => {
     if (product) {
-      setProductForModal({ ...product, quantity });
+      setProductForModal(toProductType(product));
       setToggleCartModal(true);
     }
   };
 
   const handleWishlistToggle = () => {
     if (product) {
-      if (isInWishlist({ product })) {
-        removeFromWishlist({ product });
+      const productForActions = toProductType(product);
+      if (isInWishlist({ product: productForActions })) {
+        removeFromWishlist({ product: productForActions });
       } else {
-        addToWishlist({ product });
+        addToWishlist({ product: productForActions });
       }
     }
   };
@@ -159,7 +136,7 @@ const ProductDetailPage: React.FC = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-600 mb-4">Product Not Found</h1>
-          <p className="text-gray-500 mb-4">The product you're looking for doesn't exist.</p>
+          <p className="text-gray-500 mb-4">The product you&apos;re looking for doesn&apos;t exist.</p>
           <Link 
             href="/shop" 
             className="inline-block px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
@@ -280,7 +257,7 @@ const ProductDetailPage: React.FC = () => {
             </div>
 
             {/* Dimensions */}
-            {product.dimensions && (
+            {product.dimensions && typeof product.dimensions !== "string" && (
               <div className="p-4 bg-gray-50 rounded-lg">
                 <h3 className="font-medium text-gray-700 mb-2">Dimensions</h3>
                 <div className="grid grid-cols-3 gap-4 text-sm">
@@ -348,10 +325,12 @@ const ProductDetailPage: React.FC = () => {
                 <button
                   onClick={handleWishlistToggle}
                   className={`px-4 py-3 border border-gray-300 rounded hover:border-gray-400 transition-colors ${
-                    isInWishlist({ product }) ? 'bg-red-50 border-red-300' : ''
+                    productForActions && isInWishlist({ product: productForActions })
+                      ? 'bg-red-50 border-red-300'
+                      : ''
                   }`}
                 >
-                  {isInWishlist({ product }) ? '❤️' : '🤍'}
+                  {productForActions && isInWishlist({ product: productForActions }) ? '❤️' : '🤍'}
                 </button>
                 <button
                   onClick={handleShare}

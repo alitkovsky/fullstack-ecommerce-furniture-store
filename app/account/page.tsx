@@ -13,6 +13,17 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+type AccountOrder = {
+  id: string;
+  createdAt: Date;
+  totalPrice: number;
+  items: {
+    quantity: number;
+    price: number;
+    product: { name: string; images: string[] };
+  }[];
+};
+
 async function getUserOrders(userId: string) {
   return await prisma.order.findMany({
     where: { userId },
@@ -53,7 +64,7 @@ export default async function AccountPage() {
 
   // Ensure user exists in our database
   const user = await ensureUserExists(userId, clerkUser.emailAddresses[0]?.emailAddress || "");
-  const orders = await getUserOrders(userId);
+  const orders: AccountOrder[] = await getUserOrders(userId);
 
   const totalSpent = orders.reduce((sum, order) => sum + order.totalPrice, 0);
   const totalOrders = orders.length;
