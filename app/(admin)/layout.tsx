@@ -22,7 +22,6 @@ const poppins = Poppins({
 import CartModal from "@/app/components/CartModal";
 import AddToCartModal from "@/app/components/AddToCartModal";
 import ScrollToTop from "@/app/components/ScrollToTop";
-import Header from "@/app/components/Header";
 import ClerkLoadBanner from "@/app/components/ClerkLoadBanner";
 
 import { LoadingPage } from "./admin/lazyload";

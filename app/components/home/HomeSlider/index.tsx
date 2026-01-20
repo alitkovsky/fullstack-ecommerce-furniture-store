@@ -115,7 +115,7 @@ const HomeSlider: React.FC = () => {
                                     <span className="text-[#616161] font-medium">{slide.id} - {slide.title}</span>
                                     <span className="text-[#3A3A3A] font-semibold text-3xl">{slide.category}</span>
                                 </div>
-                                <button className="-translate-x-28 z-0 bg-ochre text-white text-2xl p-3">
+                                <button className="-translate-x-28 z-0 bg-ochre text-white text-2xl p-3" aria-label={`View ${slide.title}`}>
                                     →
                                 </button>
                             </div>
@@ -123,10 +123,10 @@ const HomeSlider: React.FC = () => {
                     ))}
                 </Slider>
                 <div className="flex absolute lg:-left-5 top-1/2 justify-between w-full text-ochre text-sm">
-                    <button onClick={() => slider.current?.slickPrev()} className={` bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
+                    <button onClick={() => slider.current?.slickPrev()} className={` bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`} aria-label="Previous slide">
                         <Image className="rotate-180" src={SliderArrow} alt="arrow" />
                     </button>
-                    <button onClick={() => slider.current?.slickNext()} className={`bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`}>
+                    <button onClick={() => slider.current?.slickNext()} className={`bg-white rounded-full h-10 w-10 flex justify-center items-center shadow-lg hover:bg-neutral-100 duration-300`} aria-label="Next slide">
                         <Image src={SliderArrow} alt="arrow" />
                     </button>
                 </div>

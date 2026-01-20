@@ -26,7 +26,6 @@ export const ContentCardSkeletonList: React.FC = () => {
    return (
       <div className="w-full columns-1 md:columns-2 lg:columns-3 2xl:columns-4">
          {Array.from({ length: 8 }).map((_, i) => (
-         // eslint-disable-next-line react/no-array-index-key
          <ContentCardSkeleton key={i} />
          ))}
       </div>

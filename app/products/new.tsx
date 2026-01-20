@@ -6,9 +6,6 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useData } from "@/app/context/AppContext";
 
-import ProductFeaturesComponent from "@/app/components/ProductFeaturesComponent/new";
-import ProductReviews from "@/app/components/ProductReviews";
-import RelatedProducts from "@/app/components/RelatedProducts";
 import { DatabaseProduct } from "@/app/interfaces";
 import { toProductType } from "@/app/lib/product-mappers";
 
@@ -22,7 +19,6 @@ const ProductPage: React.FC = () => {
     const { id } = useParams();
     const [product, setProduct] = useState<DatabaseProduct | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const [activeTab, setActiveTab] = useState<number>(1);
 
     const { setProductForModal } = useData();
 

@@ -1,11 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { put } from '@vercel/blob';
-import { z } from 'zod';
-
-const uploadSchema = z.object({
-  filename: z.string().min(1),
-  contentType: z.string().optional(),
-});
 
 export async function POST(request: NextRequest) {
   try {

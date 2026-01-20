@@ -43,17 +43,6 @@ async function getUserOrders(userId: string) {
   });
 }
 
-async function getUserData(userId: string) {
-  return await prisma.user.findUnique({
-    where: { id: userId },
-    select: {
-      email: true,
-      role: true,
-      createdAt: true,
-    },
-  });
-}
-
 export default async function AccountPage() {
   const { userId } = await auth();
   const clerkUser = await currentUser();

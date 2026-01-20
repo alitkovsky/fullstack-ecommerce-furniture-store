@@ -51,7 +51,7 @@ const CartModal: React.FC = () => {
             <div className={`${!isCartOpen ? 'right-[-100%] w-0 overflow-hidden' : 'right-0 w-full lg:w-[30%]'}  bg-white fixed h-screen py-5 px-8`}>
                 <div className="flex justify-between items-center">
                     <p className='font-semibold text-2xl'>Shopping Cart</p>
-                    <button onClick={() => setIsCartOpen(false)}>
+                    <button onClick={() => setIsCartOpen(false)} aria-label="Close cart">
                         <Image loading="lazy" src={Close} alt="close" />
                     </button>
                 </div>

@@ -33,7 +33,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const handleAddToWishlist = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
         event.stopPropagation()
-        isInWishlist({ product }) ? addToWishlist({ product }) : removeFromWishlist({ product })
+        if (isInWishlist({ product })) {
+            removeFromWishlist({ product })
+        } else {
+            addToWishlist({ product })
+        }
     }
 
     const handleShare = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -46,6 +50,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const overlayToggle = () => {
         setIsOverlayShown(prev => !prev)
     }
+
+    const handleOverlayKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            overlayToggle();
+        }
+    };
 
     const divRef = useRef<HTMLDivElement>(null);
 
@@ -63,8 +74,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     return (
         <Link href={`/products/${product.id}`}>
-            <div ref={divRef} onClick={overlayToggle} className="bg-[#F4F5F7] cursor-pointer relative group overflow-hidden">
-                <Image loading="lazy" className="h-80 w-full object-cover object-center" src={product.image} alt={product.title + "_image"} />
+            <div
+                ref={divRef}
+                onClick={overlayToggle}
+                onKeyDown={handleOverlayKeyDown}
+                role="button"
+                tabIndex={0}
+                aria-pressed={isOverlayShown}
+                className="bg-[#F4F5F7] cursor-pointer relative group overflow-hidden"
+            >
+                <Image
+                    loading="lazy"
+                    className="h-80 w-full object-cover object-center"
+                    src={product.image}
+                    alt={product.title + "_image"}
+                    width={320}
+                    height={320}
+                />
                 <div className="p-4">
                     <h5 className="text-[#3A3A3A] text-xl lg:text-2xl font-semibold">{product.title}</h5>
                     <p className="text-[#898989] font-medium my-1">{product.about}</p>

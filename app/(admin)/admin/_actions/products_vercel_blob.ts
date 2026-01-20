@@ -359,7 +359,7 @@ export async function seedProductsFromStatic() {
     // Import static products data
     const { default: staticProducts } = await import("@/app/data/products");
     
-    const productsData = staticProducts.map((product, index) => ({
+    const productsData = staticProducts.map((product) => ({
       name: product.title,
       description: product.about,
       priceInCents: product.price * 100, // Convert to cents

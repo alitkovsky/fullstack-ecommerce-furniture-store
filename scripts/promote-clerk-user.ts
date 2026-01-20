@@ -14,7 +14,7 @@ async function promoteClerkUser() {
   
   try {
     // First try to find the user by Clerk ID
-    let user = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: { id: clerkUserId }
     });
     

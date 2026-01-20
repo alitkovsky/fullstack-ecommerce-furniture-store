@@ -10,8 +10,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { prisma } from "@/lib/prisma";
-import { CheckCircle2, MoreVertical, XCircle } from "lucide-react";
-import { formatCurrency, formatNumber } from "@/lib/formatters";
+import { MoreVertical } from "lucide-react";
+import { formatNumber } from "@/lib/formatters";
 import {
   DropdownMenu,
   DropdownMenuContent,

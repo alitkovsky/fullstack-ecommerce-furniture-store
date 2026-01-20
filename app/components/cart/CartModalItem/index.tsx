@@ -29,7 +29,7 @@ const CartModalItem: React.FC<CartModalItemProps> = ({ p }) => {
                     </div>
                 </div>
             </div>
-            <button onClick={() => removeFromCart(p.id)} className='text-[#9F9F9F] text-2xl'>
+            <button onClick={() => removeFromCart(p.id)} className='text-[#9F9F9F] text-2xl' aria-label="Remove from cart">
                 ✖
             </button>
         </div>

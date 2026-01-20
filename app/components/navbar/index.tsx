@@ -86,19 +86,21 @@ const Navbar: React.FC = () => {
                     <SignedOut>
                         {/* Signed out users get sign in button */}
                         <SignInButton>
-                            <Image loading="lazy" src={User} alt="user" />
+                            <span aria-label="Sign in">
+                                <Image loading="lazy" src={User} alt="user" />
+                            </span>
                         </SignInButton>
                     </SignedOut>
-                    <Link href="/search">
+                    <Link href="/search" aria-label="Search">
                         <Image loading="lazy" src={Search} alt="search" />
                     </Link>
-                    <Link className="relative" href="/wishlist">
+                    <Link className="relative" href="/wishlist" aria-label="Wishlist">
                         <Image loading="lazy" src={Fav} alt="fav" />
                         {wishlist.length > 0 && <span className="absolute bg-ochre text-xs text-white rounded-full w-6 h-6 flex items-center justify-center -top-2 -right-3">
                             {wishlist.length < 10 ? wishlist.length : "9+"}
                         </span>}
                     </Link>
-                    <button className="focus:outline-hidden relative" onClick={() => setIsCartOpen((prev: boolean) => !prev)}>
+                    <button className="focus:outline-hidden relative" onClick={() => setIsCartOpen((prev: boolean) => !prev)} aria-label="Open cart">
                         <Image loading="lazy" src={Cart} alt="cart" />
                         {
                             cartItems.length > 0 &&
@@ -108,7 +110,7 @@ const Navbar: React.FC = () => {
                         }
                     </button>
                 </div>
-                <button className="lg:hidden text-3xl" onClick={() => setIsNavOpen(prev => !prev)}>
+                <button className="lg:hidden text-3xl" onClick={() => setIsNavOpen(prev => !prev)} aria-label={isNavOpen ? "Close menu" : "Open menu"}>
                     {
                         isNavOpen ? "✖" :
                             <Image className="w-9" src={Menu} alt="menu" />
@@ -127,13 +129,15 @@ const Navbar: React.FC = () => {
                     <SignedOut>
                         {/* Signed out users get sign in button */}
                         <SignInButton>
-                            <Image loading="lazy" src={User} alt="user" />
+                            <span aria-label="Sign in">
+                                <Image loading="lazy" src={User} alt="user" />
+                            </span>
                         </SignInButton>
                     </SignedOut>
-                    <Link href="/search">
+                    <Link href="/search" aria-label="Search">
                         <Image loading="lazy" src={Search} alt="search" />
                     </Link>
-                    <Link className="relative" onClick={() => setIsNavOpen(false)} href="/wishlist">
+                    <Link className="relative" onClick={() => setIsNavOpen(false)} href="/wishlist" aria-label="Wishlist">
                         <Image loading="lazy" src={Fav} alt="fav" />
                         {
                             wishlist.length > 0 &&
@@ -142,7 +146,7 @@ const Navbar: React.FC = () => {
                             </span>
                         }
                     </Link>
-                    <button className="focus:outline-hidden relative" onClick={() => setIsCartOpen((prev: boolean) => !prev)}>
+                    <button className="focus:outline-hidden relative" onClick={() => setIsCartOpen((prev: boolean) => !prev)} aria-label="Open cart">
                         <Image loading="lazy" src={Cart} alt="cart" />
                         {
                             cartItems.length > 0 &&

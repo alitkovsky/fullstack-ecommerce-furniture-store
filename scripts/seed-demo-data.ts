@@ -10,45 +10,6 @@
  */
 
 import { prisma } from "../lib/prisma";
-import { UserRole } from "@prisma/client";
-
-// Demo user credentials for public testing
-const DEMO_CREDENTIALS = {
-  admin: {
-    email: "admin@demo.com",
-    role: UserRole.ADMIN
-  },
-  customer: {
-    email: "customer@demo.com",
-    role: UserRole.CUSTOMER
-  }
-};
-
-// Sample customer data for realistic profiles
-const DEMO_CUSTOMERS = [
-  { email: "john.smith@email.com" },
-  { email: "sarah.johnson@gmail.com" },
-  { email: "mike.brown@yahoo.com" },
-  { email: "emma.davis@outlook.com" },
-  { email: "james.wilson@email.com" },
-  { email: "lisa.taylor@gmail.com" },
-  { email: "david.anderson@yahoo.com" },
-  { email: "jennifer.thomas@outlook.com" },
-  { email: "robert.jackson@email.com" },
-  { email: "amy.white@gmail.com" },
-  { email: "chris.harris@yahoo.com" },
-  { email: "jessica.martin@outlook.com" },
-  { email: "daniel.lee@email.com" },
-  { email: "michelle.garcia@gmail.com" },
-  { email: "kevin.rodriguez@yahoo.com" },
-  { email: "ashley.lewis@outlook.com" },
-  { email: "brian.walker@email.com" },
-  { email: "stephanie.hall@gmail.com" },
-  { email: "jason.allen@yahoo.com" },
-  { email: "nicole.young@outlook.com" },
-  { email: "tyler.king@email.com" },
-  { email: "samantha.scott@gmail.com" }
-];
 
 // Sample furniture products for seeding
 const SAMPLE_PRODUCTS = [
@@ -143,25 +104,6 @@ const SAMPLE_PRODUCTS = [
     sku: "NIGHT-STAND-010"
   }
 ];
-
-// Generate random order data
-function generateRandomDate(startDate: Date, endDate: Date): Date {
-  return new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
-}
-
-function getRandomProducts(products: any[], count: number = 1): any[] {
-  const shuffled = [...products].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, Math.min(count, products.length));
-}
-
-function generateRandomQuantity(): number {
-  // Weighted random: mostly 1-2 items, occasionally more
-  const rand = Math.random();
-  if (rand < 0.6) return 1;
-  if (rand < 0.85) return 2;
-  if (rand < 0.95) return 3;
-  return Math.floor(Math.random() * 3) + 4; // 4-6 items
-}
 
 async function seedDemoData() {
   console.log("🌱 Starting demo data seeding...");

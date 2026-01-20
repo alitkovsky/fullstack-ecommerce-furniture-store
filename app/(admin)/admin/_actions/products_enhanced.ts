@@ -249,7 +249,7 @@ export async function deleteMultipleProducts(ids: string[]) {
 export async function seedProductsFromStatic() {
   const { default: staticProducts } = await import("@/app/data/products");
   
-  const productsData = staticProducts.map((product, index) => ({
+  const productsData = staticProducts.map((product) => ({
     name: product.title,
     description: product.about,
     priceInCents: product.price * 100, // Convert to cents

@@ -27,9 +27,32 @@ import DemoBanner from "@/app/components/DemoBanner";
 import { LoadingPage } from "@/app/lazyload";
 import ClerkLoadBanner from "@/app/components/ClerkLoadBanner";
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Fullstack E-commerce App",
   description: "A fullstack e-commerce app built with Next.js and Prisma",
+  applicationName: "Fullstack E-commerce App",
+  openGraph: {
+    title: "Fullstack E-commerce App",
+    description: "A fullstack e-commerce app built with Next.js and Prisma",
+    url: siteUrl,
+    siteName: "Fullstack E-commerce App",
+    images: ["/assets/icon.svg"],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Fullstack E-commerce App",
+    description: "A fullstack e-commerce app built with Next.js and Prisma",
+    images: ["/assets/icon.svg"],
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -58,7 +81,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <ClerkLoadBanner />
                   <Header />
                   <DemoBanner />
-                  {children}
+                  <main id="main-content">
+                    {children}
+                  </main>
                   <ToastContainer />
                   <ScrollToTop />
                   <CartModal />

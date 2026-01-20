@@ -108,11 +108,11 @@ async function promoteUserToAdmin(clerkUserId: string, email: string) {
 // Check command line arguments
 const args = process.argv.slice(2)
 if (args.length === 2 && args[0] === '--promote') {
-  const [_, email] = args
+  const [, email] = args
   console.log('To promote a user to admin after they sign in:')
   console.log(`node scripts/sync-clerk-users.js --promote-with-id <clerk_user_id> ${email}`)
 } else if (args.length === 3 && args[0] === '--promote-with-id') {
-  const [_, clerkUserId, email] = args
+  const [, clerkUserId, email] = args
   promoteUserToAdmin(clerkUserId, email)
 } else {
   syncClerkUsers()

@@ -100,11 +100,11 @@ async function setupCleanDemo() {
   console.log('👤 Managing demo users...')
 
   // Get the existing demo users
-  let demoCustomer = await prisma.user.findUnique({
+  const demoCustomer = await prisma.user.findUnique({
     where: { email: 'customer@demo.com' }
   })
 
-  let demoAdmin = await prisma.user.findUnique({
+  const demoAdmin = await prisma.user.findUnique({
     where: { email: 'admin@demo.com' }
   })
 

@@ -11,12 +11,8 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { 
   mainNavMenu, 
   adminNavMenu, 
-  customerNavMenu,
-  isAdminRoute, 
-  isAdminNavActive 
+  isAdminRoute
 } from "@/app/config/navigation";
-import { getCurrentUser } from "@/lib/auth";
-import { UserRole } from "@prisma/client";
 
 import Icon from "@/public/assets/website-icon/icon.svg";
 import User from "@/public/assets/icons/user.svg";
@@ -83,16 +79,19 @@ const Header: React.FC = () => {
           </SignedIn>
           <SignedOut>
             <SignInButton>
-              <Image loading="lazy" src={User} alt="Login" />
+              <span aria-label="Sign in">
+                <Image loading="lazy" src={User} alt="Login" />
+              </span>
             </SignInButton>
           </SignedOut>
           <Link href="/" className="text-sm bg-gray-100 px-3 py-2 rounded-md hover:bg-gray-200">
             View Site
           </Link>
         </div>
-        <button 
+        <button
           className="lg:hidden text-3xl"
           onClick={() => setIsNavOpen(prev => !prev)}
+          aria-label={isNavOpen ? "Close menu" : "Open menu"}
         >
           {isNavOpen ? "✖" : <Image className="w-9" src={Menu} alt="menu" />}
         </button>
@@ -114,7 +113,9 @@ const Header: React.FC = () => {
           </SignedIn>
           <SignedOut>
             <SignInButton>
-              <Image loading="lazy" src={User} alt="user" />
+              <span aria-label="Sign in">
+                <Image loading="lazy" src={User} alt="user" />
+              </span>
             </SignInButton>
           </SignedOut>
           <Link href="/" className="text-sm">
@@ -154,10 +155,10 @@ const Header: React.FC = () => {
               <Image loading="lazy" src={User} alt="user" />
             </SignInButton>
           </SignedOut>
-          <Link href="/search">
+          <Link href="/search" aria-label="Search">
             <Image loading="lazy" src={Search} alt="search" />
           </Link>
-          <Link className="relative" href="/wishlist">
+          <Link className="relative" href="/wishlist" aria-label="Wishlist">
             <Image loading="lazy" src={Fav} alt="fav" />
             {wishlist.length > 0 && (
               <span className="absolute bg-ochre text-xs text-white rounded-full w-6 h-6 flex items-center justify-center -top-2 -right-3">
@@ -165,9 +166,10 @@ const Header: React.FC = () => {
               </span>
             )}
           </Link>
-          <button 
+          <button
             className="focus:outline-hidden relative" 
             onClick={() => setIsCartOpen((prev: boolean) => !prev)}
+            aria-label="Open cart"
           >
             <Image loading="lazy" src={Cart} alt="cart" />
             {cartItems.length > 0 && (
@@ -177,9 +179,10 @@ const Header: React.FC = () => {
             )}
           </button>
         </div>
-        <button 
+        <button
           className="lg:hidden text-3xl" 
           onClick={() => setIsNavOpen(prev => !prev)}
+          aria-label={isNavOpen ? "Close menu" : "Open menu"}
         >
           {isNavOpen ? "✖" : <Image className="w-9" src={Menu} alt="menu" />}
         </button>
@@ -201,16 +204,18 @@ const Header: React.FC = () => {
           </SignedIn>
           <SignedOut>
             <SignInButton>
-              <Image loading="lazy" src={User} alt="user" />
+              <span aria-label="Sign in">
+                <Image loading="lazy" src={User} alt="user" />
+              </span>
             </SignInButton>
           </SignedOut>
-          <Link href="/admin" className="flex items-center" title="Admin login">
+          <Link href="/admin" className="flex items-center" title="Admin login" aria-label="Admin login">
             <Image loading="lazy" src={User} alt="admin login" />
           </Link>
-          <Link href="/search">
+          <Link href="/search" aria-label="Search">
             <Image loading="lazy" src={Search} alt="search" />
           </Link>
-          <Link className="relative" onClick={() => setIsNavOpen(false)} href="/wishlist">
+          <Link className="relative" onClick={() => setIsNavOpen(false)} href="/wishlist" aria-label="Wishlist">
             <Image loading="lazy" src={Fav} alt="fav" />
             {wishlist.length > 0 && (
               <span className="absolute bg-ochre text-xs text-white rounded-full w-6 h-6 flex items-center justify-center -top-2 -right-3">
@@ -218,9 +223,10 @@ const Header: React.FC = () => {
               </span>
             )}
           </Link>
-          <button 
+          <button
             className="focus:outline-hidden relative" 
             onClick={() => setIsCartOpen((prev: boolean) => !prev)}
+            aria-label="Open cart"
           >
             <Image loading="lazy" src={Cart} alt="cart" />
             {cartItems.length > 0 && (

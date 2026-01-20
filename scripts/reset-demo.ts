@@ -8,6 +8,7 @@
  */
 
 import { prisma } from "../lib/prisma";
+import { execSync } from "node:child_process";
 
 async function resetDemo() {
   console.log("🔄 Resetting demo database...");
@@ -34,7 +35,6 @@ async function resetDemo() {
     console.log("🌱 Reseeding with fresh demo data...");
     
     // We'll re-run the seeding logic
-    const { execSync } = require('child_process');
     execSync('npx tsx scripts/seed-demo-data.ts', { stdio: 'inherit' });
 
     console.log("🎉 Demo reset completed successfully!");

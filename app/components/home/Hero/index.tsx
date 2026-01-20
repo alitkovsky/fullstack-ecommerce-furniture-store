@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
     };
 
     return (
-        <div className="bg-hero bg-no-repeat bg-bottom bg-cover w-full flex justify-end items-center lg:py-[250px] h-[85vh] px-8 lg:px-20">
+        <div className="bg-hero bg-no-repeat bg-bottom bg-cover w-full flex justify-end items-center lg:py-[250px] h-[44vh] lg:h-[60vh] px-8 lg:px-20">
             <div className="lg:w-1/2 p-10 rounded-lg text-dark-text bg-[#FFF3E3]">
                 <p className="font-semibold text-sm lg:text-base letter tracking-[3px] pb-2 pt-6">New Arrival</p>
                 <h1 className="font-bold text-3xl lg:text-6xl text-ochre pb-4">Discover Our <br /> New Collection</h1>

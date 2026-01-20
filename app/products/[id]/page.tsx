@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useData } from "@/app/context/AppContext";
@@ -9,9 +9,10 @@ import { formatCurrency } from "@/lib/formatters";
 import { DatabaseProduct } from "@/app/interfaces";
 import { toProductType } from "@/app/lib/product-mappers";
 
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
 const ProductDetailPage: React.FC = () => {
   const params = useParams();
-  const router = useRouter();
   const [product, setProduct] = useState<DatabaseProduct | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,6 +27,25 @@ const ProductDetailPage: React.FC = () => {
     setProductForModal
   } = useData();
   const productForActions = product ? toProductType(product) : null;
+  const productJsonLd = product
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: product.name,
+        description: product.description,
+        image: product.images,
+        sku: product.sku,
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "IDR",
+          price: (product.priceInCents / 100).toFixed(2),
+          availability: product.isAvailableForPurchase
+            ? "https://schema.org/InStock"
+            : "https://schema.org/OutOfStock",
+          url: `${baseUrl}/products/${product.id}`,
+        },
+      }
+    : null;
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -150,6 +170,12 @@ const ProductDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      {productJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+        />
+      )}
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="mb-8">

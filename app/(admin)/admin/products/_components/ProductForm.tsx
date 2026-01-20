@@ -27,15 +27,6 @@ export function ProductForm({ product }: { product?: Product | null }) {
   const [priceInCents, setPriceInCents] = useState<number | undefined>(
     product?.priceInCents
   )
-  const [collection, setCollection] = useState<string[] | undefined>(
-    product?.collectionIDs
-  );
-
-  const handleCollectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
-    setCollection(selectedOptions);
-  };
-
   return (
     <form action={action} className="space-y-8">
       <div className="space-y-2">

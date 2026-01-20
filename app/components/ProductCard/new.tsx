@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useData } from "@/app/context/AppContext";
@@ -63,6 +63,13 @@ const ProductCard: React.FC<{ product: DatabaseProduct }> = ({ product }) => {
         setIsOverlayShown((prev) => !prev);
     };
 
+    const handleOverlayKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setIsOverlayShown((prev) => !prev);
+        }
+    };
+
     // useEffect(() => {
     //     const handleClickOutside = (event: MouseEvent) => {
     //         if (divRef.current && !divRef.current.contains(event.target as Node)) {
@@ -93,6 +100,10 @@ const ProductCard: React.FC<{ product: DatabaseProduct }> = ({ product }) => {
                 <div
                     ref={divRef}
                     onClick={overlayToggle}
+                    onKeyDown={handleOverlayKeyDown}
+                    role="button"
+                    tabIndex={0}
+                    aria-pressed={isOverlayShown}
                     className="bg-[#F4F5F7] cursor-pointer relative group overflow-hidden">
                     <Image
                         loading="lazy"

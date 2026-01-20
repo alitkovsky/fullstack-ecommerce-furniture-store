@@ -8,9 +8,50 @@ import UpperFooter from "@/app/components/upperfooter";
 import blogImg from "@/public/assets/img/blog/1.jpg";
 import Search from "@/public/assets/icons/search.svg";
 
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
 const BlogPage: React.FC = () => {
+    const blogPosts = [
+        {
+            headline: "Going all-in with millennial design",
+            datePublished: "2022-08-03",
+            image: `${baseUrl}/assets/img/blog/1.jpg`,
+            url: `${baseUrl}/blog`,
+        },
+        {
+            headline: "Going all-in with millennial design",
+            datePublished: "2022-08-03",
+            image: `${baseUrl}/assets/img/blog/1.jpg`,
+            url: `${baseUrl}/blog`,
+        },
+        {
+            headline: "Going all-in with millennial design",
+            datePublished: "2022-08-03",
+            image: `${baseUrl}/assets/img/blog/1.jpg`,
+            url: `${baseUrl}/blog`,
+        },
+    ];
+
+    const blogJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        name: "Blog",
+        url: `${baseUrl}/blog`,
+        blogPost: blogPosts.map((post) => ({
+            "@type": "BlogPosting",
+            headline: post.headline,
+            datePublished: post.datePublished,
+            image: [post.image],
+            url: post.url,
+        })),
+    };
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+            />
             <PageHeading mainhead="Blog" />
             <div className="p-8 lg:p-20 flex flex-col lg:flex-row w-full gap-10 relative">
                 <div className="w-full lg:w-9/12 flex flex-col gap-16">

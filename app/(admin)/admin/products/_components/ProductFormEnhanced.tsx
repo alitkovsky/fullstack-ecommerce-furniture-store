@@ -39,13 +39,10 @@ export function ProductFormEnhanced({ product }: { product?: Product | null }) {
     product?.oldPriceInCents || 0
   );
 
-  const [selectedImages, setSelectedImages] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>(product?.images || []);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
-    setSelectedImages(files);
-    
     // Create preview URLs
     const urls = files.map(file => URL.createObjectURL(file));
     setPreviewUrls(urls);

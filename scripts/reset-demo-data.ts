@@ -116,7 +116,7 @@ async function resetDemoData() {
     }
   })
 
-  const demoAdmin = await prisma.user.create({
+  await prisma.user.create({
     data: {
       id: 'demo-admin-temp', // Will be updated when user signs in with Clerk
       email: 'admin@demo.com',
@@ -125,7 +125,7 @@ async function resetDemoData() {
   })
 
   // Create admin accounts for personal emails
-  const andreyAdmin = await prisma.user.create({
+  await prisma.user.create({
     data: {
       id: 'andrey-admin-temp', // Will be updated when user signs in with Clerk
       email: 'andrey.litkovsky@gmail.com', 
@@ -133,7 +133,7 @@ async function resetDemoData() {
     }
   })
 
-  const alitkAdmin = await prisma.user.create({
+  await prisma.user.create({
     data: {
       id: 'alitk-admin-temp', // Will be updated when user signs in with Clerk
       email: 'alitkovsky@me.com',

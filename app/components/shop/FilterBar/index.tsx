@@ -9,9 +9,9 @@ const FilterBar: React.FC = () => {
         <div className="bg-[#F9F1E7] p-8 lg:px-20 lg:py-10 flex flex-col sm:flex-row w-full justify-between">
             <div className="flex flex-col sm:flex-row mb-6 sm:mb-0 flex-wrap items-center gap-4">
                 <div className="flex flex-wrap items-center gap-5 pr-8 md:border-r-2 md:border-[#9F9F9F]">
-                    <button className="flex items-center gap-2"><Image loading="lazy" src={Filtering} alt="filtering" /> Filter</button>
-                    <button><Image loading="lazy" src={GridRound} alt="grid-round" /></button>
-                    <button><Image loading="lazy" src={ViewList} alt="view-list" /></button>
+                    <button className="flex items-center gap-2" aria-label="Open filters"><Image loading="lazy" src={Filtering} alt="filtering" /> Filter</button>
+                    <button aria-label="Grid view"><Image loading="lazy" src={GridRound} alt="grid-round" /></button>
+                    <button aria-label="List view"><Image loading="lazy" src={ViewList} alt="view-list" /></button>
                 </div>
                 <div className="md:pl-4">
                     <span>Showing 1–16 of 32 results</span>

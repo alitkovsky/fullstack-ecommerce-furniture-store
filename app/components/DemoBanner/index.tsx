@@ -31,6 +31,7 @@ export default function DemoBanner() {
         <button
           onClick={() => setIsVisible(false)}
           className="hover:bg-white/10 p-1 rounded"
+          aria-label="Dismiss demo banner"
         >
           <X className="w-4 h-4" />
         </button>

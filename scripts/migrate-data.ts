@@ -46,7 +46,7 @@ async function migrateData() {
     console.log('🚀 Starting data migration...');
 
     // Convert static products to database format
-    const productsData = staticProducts.map((product, index) => ({
+  const productsData = staticProducts.map((product) => ({
       name: product.title,
       description: product.about,
       priceInCents: product.price * 100, // Convert to cents
