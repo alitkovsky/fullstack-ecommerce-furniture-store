@@ -204,6 +204,9 @@ const Header: React.FC = () => {
               <Image loading="lazy" src={User} alt="user" />
             </SignInButton>
           </SignedOut>
+          <Link href="/admin" className="flex items-center" title="Admin login">
+            <Image loading="lazy" src={User} alt="admin login" />
+          </Link>
           <Link href="/search">
             <Image loading="lazy" src={Search} alt="search" />
           </Link>

@@ -25,6 +25,7 @@ import Footer from "@/app/components/footer";
 import DemoCredentials from "@/app/components/DemoCredentials";
 import DemoBanner from "@/app/components/DemoBanner";
 import { LoadingPage } from "@/app/lazyload";
+import ClerkLoadBanner from "@/app/components/ClerkLoadBanner";
 
 export const metadata: Metadata = {
   title: "Fullstack E-commerce App",
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
               <AppProvider>
                 <Suspense fallback={<LoadingPage />}>
+                  <ClerkLoadBanner />
                   <Header />
                   <DemoBanner />
                   {children}
